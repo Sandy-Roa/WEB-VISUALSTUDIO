@@ -1,0 +1,37 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView6";
+        settings.CallbackRouteValues = new { Controller = "SIS_HT_DETALLEESPECIAL", Action = "GridView6Partial", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "SIS_HT_DETALLEESPECIAL", Action = "GridView6PartialAddNew", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "SIS_HT_DETALLEESPECIAL", Action = "GridView6PartialUpdate", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "SIS_HT_DETALLEESPECIAL", Action = "GridView6PartialDelete", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "PK_DETALLE";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        //settings.Columns.Add("PK_DETALLE");
+        settings.Columns.Add("CLAVE_DOCUMENTO", "CLAVE DE DOCUMENTO");
+        settings.Columns.Add("DIRECCION_ENTREGA", "DIRECCION DE ENTREGA");
+        settings.Columns.Add("CLAVE_CLIENTE", "CLAVE DE CLIENTE");
+        settings.Columns.Add("CLAVE_ARTICULO", "CLAVE DE ARTÍCULO");
+        settings.Columns.Add("CANTIDAD_ORIGINAL", "CANTIDAD DE ORIGINAL");
+		settings.Columns.Add("CANTIDAD_EMBARCADA","CANTIDAD EMBARCADA");
+				//settings.Columns.Add("FK_EMBARQUE_HT");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

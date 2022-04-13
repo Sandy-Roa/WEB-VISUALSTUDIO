@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\publicacion</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/NWind.mdf">
+      <publishTime>06/23/2018 03:26:26</publishTime>
+    </File>
+    <File Include="App_Data/NWind_log.ldf">
+      <publishTime>06/23/2018 03:26:26</publishTime>
+    </File>
+    <File Include="App_Data/SideMenu.xml">
+      <publishTime>06/15/2018 13:17:50</publishTime>
+    </File>
+    <File Include="App_Data/TopMenu.xml">
+      <publishTime>08/01/2018 22:15:00</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.AspNet.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.Core.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.Consumer.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.RelyingParty.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/DXWebApplication1.dll">
+      <publishTime>03/22/2022 16:47:20</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>06/15/2018 13:18:06</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>06/15/2018 13:18:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.WebPages.OAuth.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/15/2018 13:18:14</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>06/15/2018 13:18:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>06/15/2018 13:18:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>06/15/2018 13:18:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>06/15/2018 13:18:02</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.Data.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.WebData.dll">
+      <publishTime>06/15/2018 13:18:10</publishTime>
+    </File>
+    <File Include="Content/Images/AquaHeader.jpg">
+      <publishTime>06/15/2018 13:17:40</publishTime>
+    </File>
+    <File Include="Content/Images/BlackGlassHeader.jpg">
+      <publishTime>06/15/2018 13:17:40</publishTime>
+    </File>
+    <File Include="Content/Images/GlassHeader.jpg">
+      <publishTime>06/15/2018 13:17:40</publishTime>
+    </File>
+    <File Include="Content/Images/PlasticBlueHeader.jpg">
+      <publishTime>06/15/2018 13:17:40</publishTime>
+    </File>
+    <File Include="Content/Images/RedWineHeader.jpg">
+      <publishTime>06/15/2018 13:17:40</publishTime>
+    </File>
+    <File Include="Content/Images/Rheem_logo.svg.png">
+      <publishTime>03/14/2022 13:15:48</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.css">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.min.css">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>03/14/2022 15:35:54</publishTime>
+    </File>
+    <File Include="Data/Model1.edmx.diagram">
+      <publishTime>03/14/2022 10:28:18</publishTime>
+    </File>
+    <File Include="Data/Model2.edmx.diagram">
+      <publishTime>03/22/2022 16:14:27</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/15/2018 13:17:40</publishTime>
+    </File>
+    <File Include="Models/Model1.edmx.diagram">
+      <publishTime>06/07/2020 15:42:14</publishTime>
+    </File>
+    <File Include="Models/Model2.edmx.diagram">
+      <publishTime>03/26/2019 20:56:40</publishTime>
+    </File>
+    <File Include="Models/Northwind.dbml">
+      <publishTime>06/15/2018 13:17:42</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>06/15/2018 13:22:02</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/globalize.cultures.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/globalize.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>06/15/2018 13:22:02</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.10.3.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.10.3.min.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/knockout-3.0.0.debug.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/knockout-3.0.0.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePassword.cshtml">
+      <publishTime>03/14/2022 15:57:10</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePasswordSuccess.cshtml">
+      <publishTime>03/14/2022 13:24:15</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>03/15/2022 11:44:20</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>03/14/2022 14:32:59</publishTime>
+    </File>
+    <File Include="Views/BorramePrueba1/Index.cshtml">
+      <publishTime>08/14/2018 20:19:04</publishTime>
+    </File>
+    <File Include="Views/BorramePrueba1/_GridViewPartial.cshtml">
+      <publishTime>08/14/2018 23:37:50</publishTime>
+    </File>
+    <File Include="Views/CAT_TARIFA/Index.cshtml">
+      <publishTime>06/27/2018 01:17:14</publishTime>
+    </File>
+    <File Include="Views/CAT_TARIFA/_GridViewPartial.cshtml">
+      <publishTime>06/27/2018 01:57:40</publishTime>
+    </File>
+    <File Include="Views/Home/GridViewPartialView.cshtml">
+      <publishTime>03/14/2022 13:26:19</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>06/23/2018 03:40:46</publishTime>
+    </File>
+    <File Include="Views/HT_DOCUMENTOS/Index.cshtml">
+      <publishTime>06/19/2018 14:50:34</publishTime>
+    </File>
+    <File Include="Views/HT_DOCUMENTOS/_GridView1Partial.cshtml">
+      <publishTime>07/11/2018 01:51:30</publishTime>
+    </File>
+    <File Include="Views/HT_SUBDESTINOS/Index.cshtml">
+      <publishTime>06/27/2018 07:18:20</publishTime>
+    </File>
+    <File Include="Views/HT_SUBDESTINOS/_GridView3Partial.cshtml">
+      <publishTime>06/27/2018 08:25:08</publishTime>
+    </File>
+    <File Include="Views/ReporteEmbarquesHT/Index.cshtml">
+      <publishTime>06/23/2018 02:55:36</publishTime>
+    </File>
+    <File Include="Views/ReporteEmbarquesHT/_ReportPartial.cshtml">
+      <publishTime>06/23/2018 03:14:14</publishTime>
+    </File>
+    <File Include="Views/REPORTE_EMBARQUES_GENERAL/Index.cshtml">
+      <publishTime>08/02/2018 04:29:14</publishTime>
+    </File>
+    <File Include="Views/REPORTE_EMBARQUES_GENERAL/_ReportPartial.cshtml">
+      <publishTime>08/02/2018 04:29:12</publishTime>
+    </File>
+    <File Include="Views/REPORTE_HT_SUBDESTINOS/Index.cshtml">
+      <publishTime>06/27/2018 07:21:14</publishTime>
+    </File>
+    <File Include="Views/REPORTE_HT_SUBDESTINOS/_ReportPartial.cshtml">
+      <publishTime>06/27/2018 07:20:56</publishTime>
+    </File>
+    <File Include="Views/Shared/DisplayTemplates/Boolean.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/Boolean.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/DateTime.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/Decimal.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/EmailAddress.cshtml">
+      <publishTime>06/15/2018 13:17:50</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/MultilineText.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/Password.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/String.cshtml">
+      <publishTime>06/15/2018 13:17:48</publishTime>
+    </File>
+    <File Include="Views/Shared/FooterPartialView.cshtml">
+      <publishTime>03/14/2022 14:01:42</publishTime>
+    </File>
+    <File Include="Views/Shared/HeaderPartialView.cshtml">
+      <publishTime>03/14/2022 14:02:57</publishTime>
+    </File>
+    <File Include="Views/Shared/LogOnPartialView.cshtml">
+      <publishTime>03/14/2022 14:01:13</publishTime>
+    </File>
+    <File Include="Views/Shared/_lightLayout.cshtml">
+      <publishTime>06/15/2018 13:17:46</publishTime>
+    </File>
+    <File Include="Views/Shared/_mainLayout.cshtml">
+      <publishTime>06/15/2018 13:17:46</publishTime>
+    </File>
+    <File Include="Views/Shared/_rootLayout.cshtml">
+      <publishTime>06/23/2018 03:50:22</publishTime>
+    </File>
+    <File Include="Views/SIS_HT_DETALLE/Index.cshtml">
+      <publishTime>06/24/2018 00:55:44</publishTime>
+    </File>
+    <File Include="Views/SIS_HT_DETALLE/_GridView2Partial.cshtml">
+      <publishTime>07/02/2018 06:32:52</publishTime>
+    </File>
+    <File Include="Views/SIS_HT_DETALLEESPECIAL/Index.cshtml">
+      <publishTime>06/27/2018 05:02:02</publishTime>
+    </File>
+    <File Include="Views/SIS_HT_DETALLEESPECIAL/_GridView6Partial.cshtml">
+      <publishTime>06/27/2018 06:19:38</publishTime>
+    </File>
+    <File Include="Views/SIS_HT_DETALLE_RETORNO/Index.cshtml">
+      <publishTime>06/25/2018 02:52:06</publishTime>
+    </File>
+    <File Include="Views/SIS_HT_DETALLE_RETORNO/_GridView3Partial.cshtml">
+      <publishTime>06/27/2018 02:48:18</publishTime>
+    </File>
+    <File Include="Views/UE_EMBARQUEHT/Index.cshtml">
+      <publishTime>06/15/2018 13:30:34</publishTime>
+    </File>
+    <File Include="Views/UE_EMBARQUEHT/_GridViewPartial.cshtml">
+      <publishTime>03/14/2022 10:35:51</publishTime>
+    </File>
+    <File Include="Views/UE_EMBARQUEHTESPECIAL/Index.cshtml">
+      <publishTime>06/27/2018 03:52:32</publishTime>
+    </File>
+    <File Include="Views/UE_EMBARQUEHTESPECIAL/_GridView5Partial.cshtml">
+      <publishTime>08/05/2018 06:11:22</publishTime>
+    </File>
+    <File Include="Views/UE_RETORNOHT/Index.cshtml">
+      <publishTime>06/15/2018 13:41:48</publishTime>
+    </File>
+    <File Include="Views/UE_RETORNOHT/_GridView1Partial.cshtml">
+      <publishTime>06/27/2018 03:00:30</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>08/14/2018 20:18:56</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>06/15/2018 13:17:46</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/22/2022 16:47:21</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

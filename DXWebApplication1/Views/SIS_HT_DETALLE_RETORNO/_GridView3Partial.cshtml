@@ -1,0 +1,288 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView3";
+        settings.CallbackRouteValues = new { Controller = "SIS_HT_DETALLE_RETORNO", Action = "GridView3Partial", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "SIS_HT_DETALLE_RETORNO", Action = "GridView3PartialAddNew", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "SIS_HT_DETALLE_RETORNO", Action = "GridView3PartialUpdate", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "SIS_HT_DETALLE_RETORNO", Action = "GridView3PartialDelete", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsPopup.EditForm.HorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.SettingsPopup.EditForm.VerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "PK_DETALLE";
+
+		settings.SettingsPager.Visible = true;
+        settings.SettingsPager.PageSize = 7;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "5", "10", "15" };
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+
+        settings.Columns.Add("CLAVE_DOCUMENTO", "CLAVE DEL DOCUMENTO");
+        settings.Columns.Add("CLAVE_ARTICULO", "CLAVE DEL ARTICULO");
+        settings.Columns.Add("CANTIDAD_DEVUELTA", "CANTIDAD DEVUELTA");
+        settings.Columns.Add("CAT_TIPO_DEVOLUCION.NOMBRE", "TIPO DEVOLUCION");
+        settings.Columns.Add("DESCRIPCION_DEVOLUCIÓN", "DESCRIPCION DE DEVOLUCIÓN");
+        settings.Columns.Add("CLAVE_NOTA_CREDITO", "CLAVE DE NOTA DE CRÉDITO");
+                //settings.Columns.Add("FK_EMBARQUE_HT");
+
+
+
+
+                //COMIENZA CUSTOM
+
+                settings.SetEditFormTemplateContent(c =>
+                {
+                    var sueldo = ViewData["dataItem"] ?? c.DataItem;
+
+                    ViewContext.Writer.Write("<table>" + "<tr>" + "<td>");
+
+                    ViewContext.Writer.Write("<br>");
+
+                    // REISION DE LA CAPTURA
+
+                    
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "CLAVE DE REMISIÓN:";
+                        edtSettings.AssociatedControlName = "CLAVE_DOCUMENTO";
+                    }).Render();
+
+                    Html.DevExpress().TextBox(edtSettings =>
+                    {
+                        edtSettings.Name = "CLAVE_DOCUMENTO";
+                        edtSettings.Properties.NullText = "";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        edtSettings.ClientEnabled = false;
+                        }).Bind(DataBinder.Eval(sueldo, "CLAVE_DOCUMENTO"))
+                      .Render();
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+
+                    // CLAVE DEL PRODUCTO
+                    ViewContext.Writer.Write("<td>");
+
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "CLAVE DEL ARTÍCULO:";
+                        edtSettings.AssociatedControlName = "CLAVE_ARTICULO";
+                    }).Render();
+
+                    Html.DevExpress().TextBox(edtSettings =>
+                    {
+                        edtSettings.Name = "CLAVE_ARTICULO";
+                        edtSettings.Properties.NullText = "";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        edtSettings.ClientEnabled = false;
+                    }).Bind(DataBinder.Eval(sueldo, "CLAVE_ARTICULO"))
+                      .Render();
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+                    // TIPO DEVOLUCIÓN
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(
+                       edtSettings =>
+                       {
+                           edtSettings.ControlStyle.CssClass = "label";
+                           edtSettings.Text = "TIPO DEVOLUCION:";
+                           edtSettings.AssociatedControlName = "FK_TIPO_DEVOLUCION";
+                       }
+                   )
+                   .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_TIPO_DEVOLUCION";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_TIPO_DEVOLUCION";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetTIPODEVOLUCION())
+                    .Bind(DataBinder.Eval(sueldo, "FK_TIPO_DEVOLUCION"))
+                    .Render();
+
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+
+                    //CANTIDAD
+
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "CANTIDAD DEVUELTA:";
+                        edtSettings.AssociatedControlName = "CANTIDAD_DEVUELTA";
+                    }).Render();
+
+                    Html.DevExpress().SpinEdit(edtSettings =>
+                    {
+                        edtSettings.Name = "CANTIDAD_DEVUELTA";
+                        edtSettings.Properties.MinValue = 0;
+                        edtSettings.Properties.MaxValue = 999999999;
+                        edtSettings.Properties.DecimalPlaces = 0;
+                        edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                        edtSettings.Properties.Increment = 1M;
+                        edtSettings.Properties.LargeIncrement = 1;
+                        edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        
+                    }).Bind(DataBinder.Eval(sueldo, "CANTIDAD_DEVUELTA"))
+                    .Render();
+                    
+
+                    ViewContext.Writer.Write("</td>");
+
+
+                    //NC
+
+                    ViewContext.Writer.Write("<td>");
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "CLAVE NOTA CREDITO:";
+                        edtSettings.AssociatedControlName = "CLAVE_NOTA_CREDITO";
+                    }).Render();
+
+                    Html.DevExpress().TextBox(edtSettings =>
+                    {
+                        edtSettings.Name = "CLAVE_NOTA_CREDITO";
+                        edtSettings.Properties.NullText = "";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                       
+                    }).Bind(DataBinder.Eval(sueldo, "CLAVE_NOTA_CREDITO"))
+                      .Render();
+
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+                    ViewContext.Writer.Write("</table>");
+
+                    //DESCRIPCIÓN 
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "DESCRIPCIÓN:";
+                        edtSettings.AssociatedControlName = "DESCRIPCION_DEVOLUCIÓN";
+                    }).Render();
+
+
+                    Html.DevExpress().Memo(edtSettings =>
+                    {
+                        edtSettings.Name = "DESCRIPCION_DEVOLUCIÓN";
+                        edtSettings.Properties.NullText = "DESCRIPCION DE LA DEVOLUCIÓN";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(600);
+                        edtSettings.Height = Unit.Pixel(50);
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Descripción de la Introducción para este Programa de Trabajo" : "Editar Introducción";
+                    }).Bind(DataBinder.Eval(sueldo, "DESCRIPCION_DEVOLUCIÓN"))
+                      .Render();
+
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+                    
+                    
+
+                    /***************************BOTNES**********************************/
+
+
+                    //**Botones Guardar & Cancelar
+                    //ViewContext.Writer.Write("<br>");
+                    ViewContext.Writer.Write("<hr noshade>");
+                    Html.DevExpress().Label(
+                                edtSettings =>
+                                {
+                                    edtSettings.ControlStyle.CssClass = "label";
+                                }
+                            )
+                            .Render();
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnUpda";
+                            btnSettings.Text = "Guardar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            btnSettings.Images.Image.Url = "Content/Images/guardar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Images.Image.Width = 16;
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView3" + ".UpdateEdit(); }";
+
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnCanc";
+                            btnSettings.Text = "Cancelar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            btnSettings.Images.Image.Url = "Content/Images/cancelar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Style["position"] = "relative";
+                            btnSettings.Style["left"] = "5px";
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView3" + ".CancelEdit(); }";
+                        }
+                    )
+                    .Render();
+
+                    
+                }); //TERMINA CUSTOM
+        
+        
+        
+        
+        
+        
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

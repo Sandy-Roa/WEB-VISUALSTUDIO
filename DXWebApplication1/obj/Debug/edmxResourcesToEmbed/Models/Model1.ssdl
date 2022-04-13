@@ -1,0 +1,739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EMBARQUESRHEEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AUX_FOLIOS">
+    <Key>
+      <PropertyRef Name="PK_FOLIOS" />
+    </Key>
+    <Property Name="CEDIS" Type="varchar" MaxLength="20" />
+    <Property Name="ULT_FOLIO" Type="int" />
+    <Property Name="ID" Type="int" />
+    <Property Name="PK_FOLIOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AUX_HT_SUBDESTINOS">
+    <Key>
+      <PropertyRef Name="PK_HT_SUBDESTINOS" />
+    </Key>
+    <Property Name="PK_HT_SUBDESTINOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_EMBARQUE_HT" Type="int" />
+    <Property Name="FOLIO_EMBARQUE" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="AUX_REMISIONES">
+    <Key>
+      <PropertyRef Name="PK_REMISIONES" />
+    </Key>
+    <Property Name="PK_REMISIONES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CLAVE_DOC" Type="varchar" MaxLength="20" />
+    <Property Name="DISPONIBLE" Type="varchar" MaxLength="1" />
+    <Property Name="CEDIS" Type="varchar" MaxLength="50" />
+    <Property Name="TIPO" Type="varchar" MaxLength="2" />
+    <Property Name="FK_EMPRESA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAT_CEDIS">
+    <Key>
+      <PropertyRef Name="PK_CEDIS" />
+    </Key>
+    <Property Name="PK_CEDIS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_DESTINO">
+    <Key>
+      <PropertyRef Name="PK_DESTINO" />
+    </Key>
+    <Property Name="PK_DESTINO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="TIPO_P" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="CAT_EMPRESA">
+    <Key>
+      <PropertyRef Name="PK_EMPRESA" />
+    </Key>
+    <Property Name="PK_EMPRESA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="PK_PROVEEDOR" />
+    </Key>
+    <Property Name="PK_PROVEEDOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_PROVIENE_DE">
+    <Key>
+      <PropertyRef Name="PK_PROVIENE_DE" />
+    </Key>
+    <Property Name="PK_PROVIENE_DE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="DISPONIBLE" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="CAT_STATUS_EMBARQUE">
+    <Key>
+      <PropertyRef Name="PK_STATUS_EMBARQUE" />
+    </Key>
+    <Property Name="PK_STATUS_EMBARQUE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_STATUS_RETORNO">
+    <Key>
+      <PropertyRef Name="PK_STATUS_RETORNO" />
+    </Key>
+    <Property Name="PK_STATUS_RETORNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_TARIFA">
+    <Key>
+      <PropertyRef Name="PK_TARIFA" />
+    </Key>
+    <Property Name="CEDIS" Type="varchar" MaxLength="50" />
+    <Property Name="DESTINO" Type="varchar" MaxLength="50" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="50" />
+    <Property Name="TRANSPORTE" Type="varchar" MaxLength="50" />
+    <Property Name="TARIFA" Type="float" />
+    <Property Name="PK_TARIFA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_DEVOLUCION">
+    <Key>
+      <PropertyRef Name="PK_TIPO_DEVOLUCION" />
+    </Key>
+    <Property Name="PK_TIPO_DEVOLUCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_EMBARQUE">
+    <Key>
+      <PropertyRef Name="PK_TIPO_EMBARQUE" />
+    </Key>
+    <Property Name="PK_TIPO_EMBARQUE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_ENTREGA">
+    <Key>
+      <PropertyRef Name="PK_TIPO_ENTREGA" />
+    </Key>
+    <Property Name="PK_TIPO_ENTREGA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_HT">
+    <Key>
+      <PropertyRef Name="PK_TIPO_HT" />
+    </Key>
+    <Property Name="PK_TIPO_HT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAT_TRANSPORTE">
+    <Key>
+      <PropertyRef Name="PK_TRANSPORTE" />
+    </Key>
+    <Property Name="PK_TRANSPORTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HT_DOCUMENTOS">
+    <Key>
+      <PropertyRef Name="PK_HT_DOCUMENTOS" />
+    </Key>
+    <Property Name="PK_HT_DOCUMENTOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_EMBARQUE_HT" Type="int" />
+    <Property Name="FOLIO_EMBARQUE" Type="varchar" MaxLength="20" />
+    <Property Name="TIPO_DOCUMENTO" Type="varchar" MaxLength="50" />
+    <Property Name="CLAVE_DOCUMENTO" Type="varchar" MaxLength="50" />
+    <Property Name="TOTAL_PARCIAL" Type="varchar" MaxLength="1" />
+    <Property Name="PROCESADO" Type="varchar" MaxLength="1" />
+    <Property Name="FK_REMISIONES" Type="int" />
+  </EntityType>
+  <EntityType Name="HT_SUBDESTINOS">
+    <Key>
+      <PropertyRef Name="PK_SUBDESTINO" />
+    </Key>
+    <Property Name="PK_SUBDESTINO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_HT_DETALLE" Type="int" />
+    <Property Name="FOLIO_EMBARQUE" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="DIRECCION_ENTREGA" Type="varchar" MaxLength="255" />
+    <Property Name="CLAVE_PEDIDO" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_ORDEN_COMPRA" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_CLIENTE" Type="varchar" MaxLength="10" />
+    <Property Name="CLAVE_ARTICULO" Type="varchar" MaxLength="16" />
+    <Property Name="CANTIDAD_EMBARCADA" Type="float" />
+    <Property Name="SUBD_1" Type="float" />
+    <Property Name="SUBD_2" Type="float" />
+    <Property Name="SUBD_3" Type="float" />
+    <Property Name="SUBD_4" Type="float" />
+    <Property Name="SUBD_5" Type="float" />
+    <Property Name="SUBD_6" Type="float" />
+    <Property Name="SUBD_7" Type="float" />
+    <Property Name="SUBD_8" Type="float" />
+    <Property Name="SUBD_9" Type="float" />
+    <Property Name="SUBD_10" Type="float" />
+  </EntityType>
+  <EntityType Name="SIS_HT_DETALLE">
+    <Key>
+      <PropertyRef Name="PK_DETALLE" />
+    </Key>
+    <Property Name="PK_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FOLIO_EMBARQUE" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="DIRECCION_ENTREGA" Type="varchar" MaxLength="255" />
+    <Property Name="CLAVE_COTIZACION" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_PEDIDO" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_FACTURA" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_ORDEN_COMPRA" Type="varchar" MaxLength="20" />
+    <Property Name="CLAVE_CLIENTE" Type="varchar" MaxLength="10" />
+    <Property Name="CLAVE_ARTICULO" Type="varchar" MaxLength="16" />
+    <Property Name="CANTIDAD_ORIGINAL" Type="float" />
+    <Property Name="CANTIDAD_EMBARCADA" Type="float" />
+    <Property Name="CANTIDAD_DEVUELTA" Type="float" />
+    <Property Name="FK_TIPO_DEVOLUCION" Type="int" />
+    <Property Name="DESCRIPCION_DEVOLUCIÓN" Type="varchar(max)" />
+    <Property Name="CLAVE_NOTA_CREDITO" Type="varchar" MaxLength="20" />
+    <Property Name="FK_EMBARQUE_HT" Type="int" />
+    <Property Name="OBSERVACIONES" Type="varchar(max)" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'EMBARQUESRHEEM.dbo.T_COI_POL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="T_COI_POL">
+    <Key>
+      <PropertyRef Name="RDM" />
+      <PropertyRef Name="2031" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="MONEDA" />
+      <PropertyRef Name="ESP_1" />
+      <PropertyRef Name="CR_DR" />
+      <PropertyRef Name="DESCR_ESP" />
+      <PropertyRef Name="556" />
+      <PropertyRef Name="CERO_1" />
+      <PropertyRef Name="CERO_2" />
+      <PropertyRef Name="CERO_3" />
+      <PropertyRef Name="CERO_4" />
+      <PropertyRef Name="CBF1" />
+      <PropertyRef Name="CBF2" />
+      <PropertyRef Name="CBF3" />
+      <PropertyRef Name="CBF4" />
+      <PropertyRef Name="CBF5" />
+      <PropertyRef Name="CBF6" />
+      <PropertyRef Name="CBF7" />
+      <PropertyRef Name="CBF8" />
+      <PropertyRef Name="CBF9" />
+      <PropertyRef Name="CBF10" />
+      <PropertyRef Name="CBF11" />
+      <PropertyRef Name="CBF12" />
+      <PropertyRef Name="CBF13" />
+      <PropertyRef Name="CBF14" />
+      <PropertyRef Name="CBF15" />
+      <PropertyRef Name="CBF16" />
+      <PropertyRef Name="CBF17" />
+      <PropertyRef Name="CBF18" />
+    </Key>
+    <Property Name="RDM" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="2031" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="FECHA" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="MONEDA" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ESP_1" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CR_DR" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="DESCR_ESP" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="556" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CTA_1" Type="nvarchar" MaxLength="6" />
+    <Property Name="CTA_2" Type="nvarchar" MaxLength="5" />
+    <Property Name="CTA_3" Type="nvarchar" MaxLength="5" />
+    <Property Name="CTA_4" Type="nvarchar" MaxLength="5" />
+    <Property Name="CERO_1" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CERO_2" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CERO_3" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="CERO_4" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="MONTO_DR1" Type="varchar" MaxLength="27" />
+    <Property Name="MONTO_CR1" Type="varchar" MaxLength="27" />
+    <Property Name="MONTO_DR2" Type="varchar" MaxLength="27" />
+    <Property Name="MONTO_CR2" Type="varchar" MaxLength="27" />
+    <Property Name="CBF1" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF2" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF3" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF4" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF5" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF6" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF7" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF8" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF9" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF10" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF11" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF12" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF13" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF14" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF15" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF16" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF17" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF18" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="AÑO" Type="int" />
+    <Property Name="MES" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'EMBARQUESRHEEM.dbo.T_COI_POL_TMP' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="T_COI_POL_TMP">
+    <Key>
+      <PropertyRef Name="RDM" />
+      <PropertyRef Name="2031" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="MONEDA" />
+      <PropertyRef Name="ESP_1" />
+      <PropertyRef Name="CR_DR" />
+      <PropertyRef Name="DESCR_ESP" />
+      <PropertyRef Name="556" />
+      <PropertyRef Name="CERO_1" />
+      <PropertyRef Name="CERO_2" />
+      <PropertyRef Name="CERO_3" />
+      <PropertyRef Name="CERO_4" />
+      <PropertyRef Name="CBF1" />
+      <PropertyRef Name="CBF2" />
+      <PropertyRef Name="CBF3" />
+      <PropertyRef Name="CBF4" />
+      <PropertyRef Name="CBF5" />
+      <PropertyRef Name="CBF6" />
+      <PropertyRef Name="CBF7" />
+      <PropertyRef Name="CBF8" />
+      <PropertyRef Name="CBF9" />
+      <PropertyRef Name="CBF10" />
+      <PropertyRef Name="CBF11" />
+      <PropertyRef Name="CBF12" />
+      <PropertyRef Name="CBF13" />
+      <PropertyRef Name="CBF14" />
+      <PropertyRef Name="CBF15" />
+      <PropertyRef Name="CBF16" />
+      <PropertyRef Name="CBF17" />
+      <PropertyRef Name="CBF18" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="RDM" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="2031" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="FECHA" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="MONEDA" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ESP_1" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CR_DR" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="DESCR_ESP" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="556" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CTA_1" Type="nvarchar" MaxLength="6" />
+    <Property Name="CTA_2" Type="nvarchar" MaxLength="5" />
+    <Property Name="CTA_3" Type="nvarchar" MaxLength="5" />
+    <Property Name="CTA_4" Type="nvarchar" MaxLength="5" />
+    <Property Name="CERO_1" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CERO_2" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CERO_3" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="CERO_4" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="MONTO_DR1" Type="varchar" MaxLength="27" />
+    <Property Name="MONTO_CR1" Type="varchar" MaxLength="27" />
+    <Property Name="MONTO_DR2" Type="varchar" MaxLength="27" />
+    <Property Name="MONTO_CR2" Type="varchar" MaxLength="27" />
+    <Property Name="CBF1" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF2" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF3" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF4" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF5" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF6" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF7" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF8" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF9" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF10" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF11" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF12" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF13" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF14" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF15" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF16" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF17" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CBF18" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="NUM_CTA" Type="nvarchar" MaxLength="21" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UE_EMBARQUEHT">
+    <Key>
+      <PropertyRef Name="PK_EMBARQUE_HT" />
+    </Key>
+    <Property Name="PK_EMBARQUE_HT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_CEDIS" Type="int" />
+    <Property Name="FECHA_ELABORACION" Type="date" />
+    <Property Name="FK_PROVEEDOR" Type="int" />
+    <Property Name="FOLIO_EMBARQUE" Type="varchar" MaxLength="20" />
+    <Property Name="FK_DESTINO" Type="int" />
+    <Property Name="TIPO_ENTREGA" Type="int" />
+    <Property Name="TOTAL_FACTURAS" Type="int" />
+    <Property Name="TOTAL_CAJAS_CARGADAS" Type="int" />
+    <Property Name="OPERADOR" Type="varchar" MaxLength="150" />
+    <Property Name="FK_PROVIENE_DE" Type="int" />
+    <Property Name="FECHA_ENTREGA" Type="date" />
+    <Property Name="FK_STATUS_EMBARQUE" Type="int" />
+    <Property Name="FK_TIPO_EMBARQUE" Type="int" />
+    <Property Name="FK_TIPO_HT" Type="int" />
+    <Property Name="FK_STATUS_RETORNO" Type="int" />
+    <Property Name="PADRE_HIJO" Type="varchar" MaxLength="1" />
+    <Property Name="CLAVE_PADRE" Type="varchar" MaxLength="20" />
+    <Property Name="TARIFA" Type="float" />
+    <Property Name="IMPORTE_REAL" Type="float" />
+    <Property Name="FECHA_ENTREGA_EVIDENCIA" Type="date" />
+    <Property Name="FOLIO_HOJA_DEVOLUCION" Type="varchar" MaxLength="20" />
+    <Property Name="DESCRIPCION_RETORNO" Type="varchar(max)" />
+    <Property Name="RESPONSABLE" Type="varchar" MaxLength="150" />
+    <Property Name="FK_TRANSPORTE" Type="int" />
+  </EntityType>
+  <Association Name="FK__HT_DOCUME__FK_EM__4BAC3F29">
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="0..1" />
+    <End Role="HT_DOCUMENTOS" Type="Self.HT_DOCUMENTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UE_EMBARQUEHT">
+        <PropertyRef Name="PK_EMBARQUE_HT" />
+      </Principal>
+      <Dependent Role="HT_DOCUMENTOS">
+        <PropertyRef Name="FK_EMBARQUE_HT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HT_DOCUME__FK_RE__5629CD9C">
+    <End Role="AUX_REMISIONES" Type="Self.AUX_REMISIONES" Multiplicity="0..1" />
+    <End Role="HT_DOCUMENTOS" Type="Self.HT_DOCUMENTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUX_REMISIONES">
+        <PropertyRef Name="PK_REMISIONES" />
+      </Principal>
+      <Dependent Role="HT_DOCUMENTOS">
+        <PropertyRef Name="FK_REMISIONES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HT_SUBDES__FK_HT__7B5B524B">
+    <End Role="SIS_HT_DETALLE" Type="Self.SIS_HT_DETALLE" Multiplicity="0..1" />
+    <End Role="HT_SUBDESTINOS" Type="Self.HT_SUBDESTINOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SIS_HT_DETALLE">
+        <PropertyRef Name="PK_DETALLE" />
+      </Principal>
+      <Dependent Role="HT_SUBDESTINOS">
+        <PropertyRef Name="FK_HT_DETALLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SIS_HT_DE__FK_EM__5AEE82B9">
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="0..1" />
+    <End Role="SIS_HT_DETALLE" Type="Self.SIS_HT_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UE_EMBARQUEHT">
+        <PropertyRef Name="PK_EMBARQUE_HT" />
+      </Principal>
+      <Dependent Role="SIS_HT_DETALLE">
+        <PropertyRef Name="FK_EMBARQUE_HT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SIS_HT_DE__FK_TI__5BE2A6F2">
+    <End Role="CAT_TIPO_DEVOLUCION" Type="Self.CAT_TIPO_DEVOLUCION" Multiplicity="0..1" />
+    <End Role="SIS_HT_DETALLE" Type="Self.SIS_HT_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_DEVOLUCION">
+        <PropertyRef Name="PK_TIPO_DEVOLUCION" />
+      </Principal>
+      <Dependent Role="SIS_HT_DETALLE">
+        <PropertyRef Name="FK_TIPO_DEVOLUCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_CE__36B12243">
+    <End Role="CAT_CEDIS" Type="Self.CAT_CEDIS" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CEDIS">
+        <PropertyRef Name="PK_CEDIS" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_CEDIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_DE__37A5467C">
+    <End Role="CAT_DESTINO" Type="Self.CAT_DESTINO" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_DESTINO">
+        <PropertyRef Name="PK_DESTINO" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_DESTINO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_PR__38996AB5">
+    <End Role="CAT_PROVEEDOR" Type="Self.CAT_PROVEEDOR" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_PROVEEDOR">
+        <PropertyRef Name="PK_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_PR__398D8EEE">
+    <End Role="CAT_PROVIENE_DE" Type="Self.CAT_PROVIENE_DE" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_PROVIENE_DE">
+        <PropertyRef Name="PK_PROVIENE_DE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_PROVIENE_DE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_ST__3A81B327">
+    <End Role="CAT_STATUS_EMBARQUE" Type="Self.CAT_STATUS_EMBARQUE" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_STATUS_EMBARQUE">
+        <PropertyRef Name="PK_STATUS_EMBARQUE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_STATUS_EMBARQUE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_ST__3B75D760">
+    <End Role="CAT_STATUS_RETORNO" Type="Self.CAT_STATUS_RETORNO" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_STATUS_RETORNO">
+        <PropertyRef Name="PK_STATUS_RETORNO" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_STATUS_RETORNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_TI__3C69FB99">
+    <End Role="CAT_TIPO_EMBARQUE" Type="Self.CAT_TIPO_EMBARQUE" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_EMBARQUE">
+        <PropertyRef Name="PK_TIPO_EMBARQUE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_TIPO_EMBARQUE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_TI__3D5E1FD2">
+    <End Role="CAT_TIPO_HT" Type="Self.CAT_TIPO_HT" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_HT">
+        <PropertyRef Name="PK_TIPO_HT" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_TIPO_HT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_TR__3E52440B">
+    <End Role="CAT_TRANSPORTE" Type="Self.CAT_TRANSPORTE" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TRANSPORTE">
+        <PropertyRef Name="PK_TRANSPORTE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_TRANSPORTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__TIPO___6E01572D">
+    <End Role="CAT_TIPO_ENTREGA" Type="Self.CAT_TIPO_ENTREGA" Multiplicity="0..1" />
+    <End Role="UE_EMBARQUEHT" Type="Self.UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_ENTREGA">
+        <PropertyRef Name="PK_TIPO_ENTREGA" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="TIPO_ENTREGA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPRESA">
+    <End Role="CAT_EMPRESA" Type="Self.CAT_EMPRESA" Multiplicity="0..1" />
+    <End Role="AUX_REMISIONES" Type="Self.AUX_REMISIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_EMPRESA">
+        <PropertyRef Name="PK_EMPRESA" />
+      </Principal>
+      <Dependent Role="AUX_REMISIONES">
+        <PropertyRef Name="FK_EMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EMBARQUESRHEEMModelStoreContainer">
+    <EntitySet Name="AUX_FOLIOS" EntityType="Self.AUX_FOLIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AUX_HT_SUBDESTINOS" EntityType="Self.AUX_HT_SUBDESTINOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AUX_REMISIONES" EntityType="Self.AUX_REMISIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_CEDIS" EntityType="Self.CAT_CEDIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_DESTINO" EntityType="Self.CAT_DESTINO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_EMPRESA" EntityType="Self.CAT_EMPRESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_PROVEEDOR" EntityType="Self.CAT_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_PROVIENE_DE" EntityType="Self.CAT_PROVIENE_DE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_STATUS_EMBARQUE" EntityType="Self.CAT_STATUS_EMBARQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_STATUS_RETORNO" EntityType="Self.CAT_STATUS_RETORNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TARIFA" EntityType="Self.CAT_TARIFA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TIPO_DEVOLUCION" EntityType="Self.CAT_TIPO_DEVOLUCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TIPO_EMBARQUE" EntityType="Self.CAT_TIPO_EMBARQUE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TIPO_ENTREGA" EntityType="Self.CAT_TIPO_ENTREGA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TIPO_HT" EntityType="Self.CAT_TIPO_HT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TRANSPORTE" EntityType="Self.CAT_TRANSPORTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HT_DOCUMENTOS" EntityType="Self.HT_DOCUMENTOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HT_SUBDESTINOS" EntityType="Self.HT_SUBDESTINOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SIS_HT_DETALLE" EntityType="Self.SIS_HT_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UE_EMBARQUEHT" EntityType="Self.UE_EMBARQUEHT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_COI_POL" EntityType="Self.T_COI_POL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [T_COI_POL].[RDM] AS [RDM], 
+    [T_COI_POL].[2031] AS [2031], 
+    [T_COI_POL].[FECHA] AS [FECHA], 
+    [T_COI_POL].[MONEDA] AS [MONEDA], 
+    [T_COI_POL].[ESP_1] AS [ESP_1], 
+    [T_COI_POL].[CR_DR] AS [CR_DR], 
+    [T_COI_POL].[DESCR_ESP] AS [DESCR_ESP], 
+    [T_COI_POL].[556] AS [556], 
+    [T_COI_POL].[CTA_1] AS [CTA_1], 
+    [T_COI_POL].[CTA_2] AS [CTA_2], 
+    [T_COI_POL].[CTA_3] AS [CTA_3], 
+    [T_COI_POL].[CTA_4] AS [CTA_4], 
+    [T_COI_POL].[CERO_1] AS [CERO_1], 
+    [T_COI_POL].[CERO_2] AS [CERO_2], 
+    [T_COI_POL].[CERO_3] AS [CERO_3], 
+    [T_COI_POL].[CERO_4] AS [CERO_4], 
+    [T_COI_POL].[MONTO_DR1] AS [MONTO_DR1], 
+    [T_COI_POL].[MONTO_CR1] AS [MONTO_CR1], 
+    [T_COI_POL].[MONTO_DR2] AS [MONTO_DR2], 
+    [T_COI_POL].[MONTO_CR2] AS [MONTO_CR2], 
+    [T_COI_POL].[CBF1] AS [CBF1], 
+    [T_COI_POL].[CBF2] AS [CBF2], 
+    [T_COI_POL].[CBF3] AS [CBF3], 
+    [T_COI_POL].[CBF4] AS [CBF4], 
+    [T_COI_POL].[CBF5] AS [CBF5], 
+    [T_COI_POL].[CBF6] AS [CBF6], 
+    [T_COI_POL].[CBF7] AS [CBF7], 
+    [T_COI_POL].[CBF8] AS [CBF8], 
+    [T_COI_POL].[CBF9] AS [CBF9], 
+    [T_COI_POL].[CBF10] AS [CBF10], 
+    [T_COI_POL].[CBF11] AS [CBF11], 
+    [T_COI_POL].[CBF12] AS [CBF12], 
+    [T_COI_POL].[CBF13] AS [CBF13], 
+    [T_COI_POL].[CBF14] AS [CBF14], 
+    [T_COI_POL].[CBF15] AS [CBF15], 
+    [T_COI_POL].[CBF16] AS [CBF16], 
+    [T_COI_POL].[CBF17] AS [CBF17], 
+    [T_COI_POL].[CBF18] AS [CBF18], 
+    [T_COI_POL].[AÑO] AS [AÑO], 
+    [T_COI_POL].[MES] AS [MES]
+    FROM [dbo].[T_COI_POL] AS [T_COI_POL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_COI_POL_TMP" EntityType="Self.T_COI_POL_TMP" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [T_COI_POL_TMP].[RDM] AS [RDM], 
+    [T_COI_POL_TMP].[2031] AS [2031], 
+    [T_COI_POL_TMP].[FECHA] AS [FECHA], 
+    [T_COI_POL_TMP].[MONEDA] AS [MONEDA], 
+    [T_COI_POL_TMP].[ESP_1] AS [ESP_1], 
+    [T_COI_POL_TMP].[CR_DR] AS [CR_DR], 
+    [T_COI_POL_TMP].[DESCR_ESP] AS [DESCR_ESP], 
+    [T_COI_POL_TMP].[556] AS [556], 
+    [T_COI_POL_TMP].[CTA_1] AS [CTA_1], 
+    [T_COI_POL_TMP].[CTA_2] AS [CTA_2], 
+    [T_COI_POL_TMP].[CTA_3] AS [CTA_3], 
+    [T_COI_POL_TMP].[CTA_4] AS [CTA_4], 
+    [T_COI_POL_TMP].[CERO_1] AS [CERO_1], 
+    [T_COI_POL_TMP].[CERO_2] AS [CERO_2], 
+    [T_COI_POL_TMP].[CERO_3] AS [CERO_3], 
+    [T_COI_POL_TMP].[CERO_4] AS [CERO_4], 
+    [T_COI_POL_TMP].[MONTO_DR1] AS [MONTO_DR1], 
+    [T_COI_POL_TMP].[MONTO_CR1] AS [MONTO_CR1], 
+    [T_COI_POL_TMP].[MONTO_DR2] AS [MONTO_DR2], 
+    [T_COI_POL_TMP].[MONTO_CR2] AS [MONTO_CR2], 
+    [T_COI_POL_TMP].[CBF1] AS [CBF1], 
+    [T_COI_POL_TMP].[CBF2] AS [CBF2], 
+    [T_COI_POL_TMP].[CBF3] AS [CBF3], 
+    [T_COI_POL_TMP].[CBF4] AS [CBF4], 
+    [T_COI_POL_TMP].[CBF5] AS [CBF5], 
+    [T_COI_POL_TMP].[CBF6] AS [CBF6], 
+    [T_COI_POL_TMP].[CBF7] AS [CBF7], 
+    [T_COI_POL_TMP].[CBF8] AS [CBF8], 
+    [T_COI_POL_TMP].[CBF9] AS [CBF9], 
+    [T_COI_POL_TMP].[CBF10] AS [CBF10], 
+    [T_COI_POL_TMP].[CBF11] AS [CBF11], 
+    [T_COI_POL_TMP].[CBF12] AS [CBF12], 
+    [T_COI_POL_TMP].[CBF13] AS [CBF13], 
+    [T_COI_POL_TMP].[CBF14] AS [CBF14], 
+    [T_COI_POL_TMP].[CBF15] AS [CBF15], 
+    [T_COI_POL_TMP].[CBF16] AS [CBF16], 
+    [T_COI_POL_TMP].[CBF17] AS [CBF17], 
+    [T_COI_POL_TMP].[CBF18] AS [CBF18], 
+    [T_COI_POL_TMP].[NUM_CTA] AS [NUM_CTA], 
+    [T_COI_POL_TMP].[ID] AS [ID]
+    FROM [dbo].[T_COI_POL_TMP] AS [T_COI_POL_TMP]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__HT_DOCUME__FK_EM__4BAC3F29" Association="Self.FK__HT_DOCUME__FK_EM__4BAC3F29">
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+      <End Role="HT_DOCUMENTOS" EntitySet="HT_DOCUMENTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HT_DOCUME__FK_RE__5629CD9C" Association="Self.FK__HT_DOCUME__FK_RE__5629CD9C">
+      <End Role="AUX_REMISIONES" EntitySet="AUX_REMISIONES" />
+      <End Role="HT_DOCUMENTOS" EntitySet="HT_DOCUMENTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HT_SUBDES__FK_HT__7B5B524B" Association="Self.FK__HT_SUBDES__FK_HT__7B5B524B">
+      <End Role="SIS_HT_DETALLE" EntitySet="SIS_HT_DETALLE" />
+      <End Role="HT_SUBDESTINOS" EntitySet="HT_SUBDESTINOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SIS_HT_DE__FK_EM__5AEE82B9" Association="Self.FK__SIS_HT_DE__FK_EM__5AEE82B9">
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+      <End Role="SIS_HT_DETALLE" EntitySet="SIS_HT_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SIS_HT_DE__FK_TI__5BE2A6F2" Association="Self.FK__SIS_HT_DE__FK_TI__5BE2A6F2">
+      <End Role="CAT_TIPO_DEVOLUCION" EntitySet="CAT_TIPO_DEVOLUCION" />
+      <End Role="SIS_HT_DETALLE" EntitySet="SIS_HT_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_CE__36B12243" Association="Self.FK__UE_EMBARQ__FK_CE__36B12243">
+      <End Role="CAT_CEDIS" EntitySet="CAT_CEDIS" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_DE__37A5467C" Association="Self.FK__UE_EMBARQ__FK_DE__37A5467C">
+      <End Role="CAT_DESTINO" EntitySet="CAT_DESTINO" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_PR__38996AB5" Association="Self.FK__UE_EMBARQ__FK_PR__38996AB5">
+      <End Role="CAT_PROVEEDOR" EntitySet="CAT_PROVEEDOR" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_PR__398D8EEE" Association="Self.FK__UE_EMBARQ__FK_PR__398D8EEE">
+      <End Role="CAT_PROVIENE_DE" EntitySet="CAT_PROVIENE_DE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_ST__3A81B327" Association="Self.FK__UE_EMBARQ__FK_ST__3A81B327">
+      <End Role="CAT_STATUS_EMBARQUE" EntitySet="CAT_STATUS_EMBARQUE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_ST__3B75D760" Association="Self.FK__UE_EMBARQ__FK_ST__3B75D760">
+      <End Role="CAT_STATUS_RETORNO" EntitySet="CAT_STATUS_RETORNO" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_TI__3C69FB99" Association="Self.FK__UE_EMBARQ__FK_TI__3C69FB99">
+      <End Role="CAT_TIPO_EMBARQUE" EntitySet="CAT_TIPO_EMBARQUE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_TI__3D5E1FD2" Association="Self.FK__UE_EMBARQ__FK_TI__3D5E1FD2">
+      <End Role="CAT_TIPO_HT" EntitySet="CAT_TIPO_HT" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_TR__3E52440B" Association="Self.FK__UE_EMBARQ__FK_TR__3E52440B">
+      <End Role="CAT_TRANSPORTE" EntitySet="CAT_TRANSPORTE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__TIPO___6E01572D" Association="Self.FK__UE_EMBARQ__TIPO___6E01572D">
+      <End Role="CAT_TIPO_ENTREGA" EntitySet="CAT_TIPO_ENTREGA" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPRESA" Association="Self.FK_EMPRESA">
+      <End Role="CAT_EMPRESA" EntitySet="CAT_EMPRESA" />
+      <End Role="AUX_REMISIONES" EntitySet="AUX_REMISIONES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

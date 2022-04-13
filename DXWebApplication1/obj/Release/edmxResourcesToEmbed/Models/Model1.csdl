@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EMBARQUESRHEEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EMBARQUESRHEEMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUX_REMISIONES" EntityType="EMBARQUESRHEEMModel.AUX_REMISIONES" />
+    <EntitySet Name="CAT_CEDIS" EntityType="EMBARQUESRHEEMModel.CAT_CEDIS" />
+    <EntitySet Name="CAT_DESTINO" EntityType="EMBARQUESRHEEMModel.CAT_DESTINO" />
+    <EntitySet Name="CAT_PROVEEDOR" EntityType="EMBARQUESRHEEMModel.CAT_PROVEEDOR" />
+    <EntitySet Name="CAT_PROVIENE_DE" EntityType="EMBARQUESRHEEMModel.CAT_PROVIENE_DE" />
+    <EntitySet Name="CAT_STATUS_EMBARQUE" EntityType="EMBARQUESRHEEMModel.CAT_STATUS_EMBARQUE" />
+    <EntitySet Name="CAT_STATUS_RETORNO" EntityType="EMBARQUESRHEEMModel.CAT_STATUS_RETORNO" />
+    <EntitySet Name="CAT_TIPO_DEVOLUCION" EntityType="EMBARQUESRHEEMModel.CAT_TIPO_DEVOLUCION" />
+    <EntitySet Name="CAT_TIPO_EMBARQUE" EntityType="EMBARQUESRHEEMModel.CAT_TIPO_EMBARQUE" />
+    <EntitySet Name="CAT_TIPO_HT" EntityType="EMBARQUESRHEEMModel.CAT_TIPO_HT" />
+    <EntitySet Name="CAT_TRANSPORTE" EntityType="EMBARQUESRHEEMModel.CAT_TRANSPORTE" />
+    <EntitySet Name="HT_DOCUMENTOS" EntityType="EMBARQUESRHEEMModel.HT_DOCUMENTOS" />
+    <EntitySet Name="AUX_FOLIOS" EntityType="EMBARQUESRHEEMModel.AUX_FOLIOS" />
+    <AssociationSet Name="FK__HT_DOCUME__FK_RE__5629CD9C" Association="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_RE__5629CD9C">
+      <End Role="AUX_REMISIONES" EntitySet="AUX_REMISIONES" />
+      <End Role="HT_DOCUMENTOS" EntitySet="HT_DOCUMENTOS" />
+    </AssociationSet>
+    <EntitySet Name="SIS_HT_DETALLE" EntityType="EMBARQUESRHEEMModel.SIS_HT_DETALLE" />
+    <AssociationSet Name="FK__SIS_HT_DE__FK_TI__5BE2A6F2" Association="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_TI__5BE2A6F2">
+      <End Role="CAT_TIPO_DEVOLUCION" EntitySet="CAT_TIPO_DEVOLUCION" />
+      <End Role="SIS_HT_DETALLE" EntitySet="SIS_HT_DETALLE" />
+    </AssociationSet>
+    <EntitySet Name="UE_EMBARQUEHT" EntityType="EMBARQUESRHEEMModel.UE_EMBARQUEHT" />
+    <AssociationSet Name="FK__UE_EMBARQ__FK_CE__36B12243" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_CE__36B12243">
+      <End Role="CAT_CEDIS" EntitySet="CAT_CEDIS" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_DE__37A5467C" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_DE__37A5467C">
+      <End Role="CAT_DESTINO" EntitySet="CAT_DESTINO" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_PR__38996AB5" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__38996AB5">
+      <End Role="CAT_PROVEEDOR" EntitySet="CAT_PROVEEDOR" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_PR__398D8EEE" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__398D8EEE">
+      <End Role="CAT_PROVIENE_DE" EntitySet="CAT_PROVIENE_DE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_ST__3A81B327" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3A81B327">
+      <End Role="CAT_STATUS_EMBARQUE" EntitySet="CAT_STATUS_EMBARQUE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_ST__3B75D760" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3B75D760">
+      <End Role="CAT_STATUS_RETORNO" EntitySet="CAT_STATUS_RETORNO" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_TI__3C69FB99" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3C69FB99">
+      <End Role="CAT_TIPO_EMBARQUE" EntitySet="CAT_TIPO_EMBARQUE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_TI__3D5E1FD2" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3D5E1FD2">
+      <End Role="CAT_TIPO_HT" EntitySet="CAT_TIPO_HT" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UE_EMBARQ__FK_TR__3E52440B" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TR__3E52440B">
+      <End Role="CAT_TRANSPORTE" EntitySet="CAT_TRANSPORTE" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HT_DOCUME__FK_EM__4BAC3F29" Association="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_EM__4BAC3F29">
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+      <End Role="HT_DOCUMENTOS" EntitySet="HT_DOCUMENTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SIS_HT_DE__FK_EM__5AEE82B9" Association="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_EM__5AEE82B9">
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+      <End Role="SIS_HT_DETALLE" EntitySet="SIS_HT_DETALLE" />
+    </AssociationSet>
+    <EntitySet Name="CAT_TARIFA" EntityType="EMBARQUESRHEEMModel.CAT_TARIFA" />
+    <EntitySet Name="CAT_TIPO_ENTREGA" EntityType="EMBARQUESRHEEMModel.CAT_TIPO_ENTREGA" />
+    <AssociationSet Name="FK__UE_EMBARQ__TIPO___6E01572D" Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__TIPO___6E01572D">
+      <End Role="CAT_TIPO_ENTREGA" EntitySet="CAT_TIPO_ENTREGA" />
+      <End Role="UE_EMBARQUEHT" EntitySet="UE_EMBARQUEHT" />
+    </AssociationSet>
+    <EntitySet Name="HT_SUBDESTINOS" EntityType="EMBARQUESRHEEMModel.HT_SUBDESTINOS" />
+    <AssociationSet Name="FK__HT_SUBDES__FK_HT__7B5B524B" Association="EMBARQUESRHEEMModel.FK__HT_SUBDES__FK_HT__7B5B524B">
+      <End Role="SIS_HT_DETALLE" EntitySet="SIS_HT_DETALLE" />
+      <End Role="HT_SUBDESTINOS" EntitySet="HT_SUBDESTINOS" />
+    </AssociationSet>
+    <EntitySet Name="AUX_HT_SUBDESTINOS" EntityType="EMBARQUESRHEEMModel.AUX_HT_SUBDESTINOS" />
+    <EntitySet Name="T_COI_POL" EntityType="EMBARQUESRHEEMModel.T_COI_POL" />
+    <EntitySet Name="T_COI_POL_TMP" EntityType="EMBARQUESRHEEMModel.T_COI_POL_TMP" />
+  </EntityContainer>
+  <EntityType Name="AUX_REMISIONES">
+    <Key>
+      <PropertyRef Name="PK_REMISIONES" />
+    </Key>
+    <Property Name="PK_REMISIONES" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CLAVE_DOC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DISPONIBLE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HT_DOCUMENTOS" Relationship="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_RE__5629CD9C" FromRole="AUX_REMISIONES" ToRole="HT_DOCUMENTOS" />
+  </EntityType>
+  <EntityType Name="CAT_CEDIS">
+    <Key>
+      <PropertyRef Name="PK_CEDIS" />
+    </Key>
+    <Property Name="PK_CEDIS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_CE__36B12243" FromRole="CAT_CEDIS" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_DESTINO">
+    <Key>
+      <PropertyRef Name="PK_DESTINO" />
+    </Key>
+    <Property Name="PK_DESTINO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO_P" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_DE__37A5467C" FromRole="CAT_DESTINO" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="PK_PROVEEDOR" />
+    </Key>
+    <Property Name="PK_PROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__38996AB5" FromRole="CAT_PROVEEDOR" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_PROVIENE_DE">
+    <Key>
+      <PropertyRef Name="PK_PROVIENE_DE" />
+    </Key>
+    <Property Name="PK_PROVIENE_DE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DISPONIBLE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__398D8EEE" FromRole="CAT_PROVIENE_DE" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_STATUS_EMBARQUE">
+    <Key>
+      <PropertyRef Name="PK_STATUS_EMBARQUE" />
+    </Key>
+    <Property Name="PK_STATUS_EMBARQUE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3A81B327" FromRole="CAT_STATUS_EMBARQUE" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_STATUS_RETORNO">
+    <Key>
+      <PropertyRef Name="PK_STATUS_RETORNO" />
+    </Key>
+    <Property Name="PK_STATUS_RETORNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3B75D760" FromRole="CAT_STATUS_RETORNO" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_DEVOLUCION">
+    <Key>
+      <PropertyRef Name="PK_TIPO_DEVOLUCION" />
+    </Key>
+    <Property Name="PK_TIPO_DEVOLUCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SIS_HT_DETALLE" Relationship="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_TI__5BE2A6F2" FromRole="CAT_TIPO_DEVOLUCION" ToRole="SIS_HT_DETALLE" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_EMBARQUE">
+    <Key>
+      <PropertyRef Name="PK_TIPO_EMBARQUE" />
+    </Key>
+    <Property Name="PK_TIPO_EMBARQUE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3C69FB99" FromRole="CAT_TIPO_EMBARQUE" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_HT">
+    <Key>
+      <PropertyRef Name="PK_TIPO_HT" />
+    </Key>
+    <Property Name="PK_TIPO_HT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3D5E1FD2" FromRole="CAT_TIPO_HT" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="CAT_TRANSPORTE">
+    <Key>
+      <PropertyRef Name="PK_TRANSPORTE" />
+    </Key>
+    <Property Name="PK_TRANSPORTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TR__3E52440B" FromRole="CAT_TRANSPORTE" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="HT_DOCUMENTOS">
+    <Key>
+      <PropertyRef Name="PK_HT_DOCUMENTOS" />
+    </Key>
+    <Property Name="PK_HT_DOCUMENTOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EMBARQUE_HT" Type="Int32" />
+    <Property Name="FOLIO_EMBARQUE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO_DOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_DOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TOTAL_PARCIAL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PROCESADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="FK_REMISIONES" Type="Int32" />
+    <NavigationProperty Name="AUX_REMISIONES" Relationship="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_RE__5629CD9C" FromRole="HT_DOCUMENTOS" ToRole="AUX_REMISIONES" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_EM__4BAC3F29" FromRole="HT_DOCUMENTOS" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <EntityType Name="AUX_FOLIOS">
+    <Key>
+      <PropertyRef Name="PK_FOLIOS" />
+    </Key>
+    <Property Name="CEDIS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ULT_FOLIO" Type="Int32" />
+    <Property Name="ID" Type="Int32" />
+    <Property Name="PK_FOLIOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK__HT_DOCUME__FK_RE__5629CD9C">
+    <End Type="EMBARQUESRHEEMModel.AUX_REMISIONES" Role="AUX_REMISIONES" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.HT_DOCUMENTOS" Role="HT_DOCUMENTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUX_REMISIONES">
+        <PropertyRef Name="PK_REMISIONES" />
+      </Principal>
+      <Dependent Role="HT_DOCUMENTOS">
+        <PropertyRef Name="FK_REMISIONES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SIS_HT_DETALLE">
+    <Key>
+      <PropertyRef Name="PK_DETALLE" />
+    </Key>
+    <Property Name="PK_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FOLIO_EMBARQUE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_DOCUMENTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION_ENTREGA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_COTIZACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_PEDIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_FACTURA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_ORDEN_COMPRA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_CLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_ARTICULO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="CANTIDAD_ORIGINAL" Type="Double" />
+    <Property Name="CANTIDAD_EMBARCADA" Type="Double" />
+    <Property Name="CANTIDAD_DEVUELTA" Type="Double" />
+    <Property Name="FK_TIPO_DEVOLUCION" Type="Int32" />
+    <Property Name="DESCRIPCION_DEVOLUCIÓN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_NOTA_CREDITO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FK_EMBARQUE_HT" Type="Int32" />
+    <NavigationProperty Name="CAT_TIPO_DEVOLUCION" Relationship="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_TI__5BE2A6F2" FromRole="SIS_HT_DETALLE" ToRole="CAT_TIPO_DEVOLUCION" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_EM__5AEE82B9" FromRole="SIS_HT_DETALLE" ToRole="UE_EMBARQUEHT" />
+    <NavigationProperty Name="HT_SUBDESTINOS" Relationship="EMBARQUESRHEEMModel.FK__HT_SUBDES__FK_HT__7B5B524B" FromRole="SIS_HT_DETALLE" ToRole="HT_SUBDESTINOS" />
+    <Property Name="OBSERVACIONES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__SIS_HT_DE__FK_TI__5BE2A6F2">
+    <End Type="EMBARQUESRHEEMModel.CAT_TIPO_DEVOLUCION" Role="CAT_TIPO_DEVOLUCION" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.SIS_HT_DETALLE" Role="SIS_HT_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_DEVOLUCION">
+        <PropertyRef Name="PK_TIPO_DEVOLUCION" />
+      </Principal>
+      <Dependent Role="SIS_HT_DETALLE">
+        <PropertyRef Name="FK_TIPO_DEVOLUCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UE_EMBARQUEHT">
+    <Key>
+      <PropertyRef Name="PK_EMBARQUE_HT" />
+    </Key>
+    <Property Name="PK_EMBARQUE_HT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_CEDIS" Type="Int32" />
+    <Property Name="FECHA_ELABORACION" Type="DateTime" Precision="0" />
+    <Property Name="FK_PROVEEDOR" Type="Int32" />
+    <Property Name="FOLIO_EMBARQUE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FK_DESTINO" Type="Int32" />
+    <Property Name="TIPO_ENTREGA" Type="Int32" />
+    <Property Name="TOTAL_FACTURAS" Type="Int32" />
+    <Property Name="TOTAL_CAJAS_CARGADAS" Type="Int32" />
+    <Property Name="OPERADOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FK_PROVIENE_DE" Type="Int32" />
+    <Property Name="FECHA_ENTREGA" Type="DateTime" Precision="0" />
+    <Property Name="FK_STATUS_EMBARQUE" Type="Int32" />
+    <Property Name="FK_TIPO_EMBARQUE" Type="Int32" />
+    <Property Name="FK_TIPO_HT" Type="Int32" />
+    <Property Name="FK_STATUS_RETORNO" Type="Int32" />
+    <Property Name="PADRE_HIJO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_PADRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TARIFA" Type="Double" />
+    <Property Name="IMPORTE_REAL" Type="Double" />
+    <Property Name="FECHA_ENTREGA_EVIDENCIA" Type="DateTime" Precision="0" />
+    <Property Name="FOLIO_HOJA_DEVOLUCION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION_RETORNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RESPONSABLE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FK_TRANSPORTE" Type="Int32" />
+    <NavigationProperty Name="CAT_CEDIS" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_CE__36B12243" FromRole="UE_EMBARQUEHT" ToRole="CAT_CEDIS" />
+    <NavigationProperty Name="CAT_DESTINO" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_DE__37A5467C" FromRole="UE_EMBARQUEHT" ToRole="CAT_DESTINO" />
+    <NavigationProperty Name="CAT_PROVEEDOR" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__38996AB5" FromRole="UE_EMBARQUEHT" ToRole="CAT_PROVEEDOR" />
+    <NavigationProperty Name="CAT_PROVIENE_DE" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__398D8EEE" FromRole="UE_EMBARQUEHT" ToRole="CAT_PROVIENE_DE" />
+    <NavigationProperty Name="CAT_STATUS_EMBARQUE" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3A81B327" FromRole="UE_EMBARQUEHT" ToRole="CAT_STATUS_EMBARQUE" />
+    <NavigationProperty Name="CAT_STATUS_RETORNO" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3B75D760" FromRole="UE_EMBARQUEHT" ToRole="CAT_STATUS_RETORNO" />
+    <NavigationProperty Name="CAT_TIPO_EMBARQUE" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3C69FB99" FromRole="UE_EMBARQUEHT" ToRole="CAT_TIPO_EMBARQUE" />
+    <NavigationProperty Name="CAT_TIPO_HT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3D5E1FD2" FromRole="UE_EMBARQUEHT" ToRole="CAT_TIPO_HT" />
+    <NavigationProperty Name="CAT_TRANSPORTE" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TR__3E52440B" FromRole="UE_EMBARQUEHT" ToRole="CAT_TRANSPORTE" />
+    <NavigationProperty Name="HT_DOCUMENTOS" Relationship="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_EM__4BAC3F29" FromRole="UE_EMBARQUEHT" ToRole="HT_DOCUMENTOS" />
+    <NavigationProperty Name="SIS_HT_DETALLE" Relationship="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_EM__5AEE82B9" FromRole="UE_EMBARQUEHT" ToRole="SIS_HT_DETALLE" />
+    <NavigationProperty Name="CAT_TIPO_ENTREGA" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__TIPO___6E01572D" FromRole="UE_EMBARQUEHT" ToRole="CAT_TIPO_ENTREGA" />
+  </EntityType>
+  <Association Name="FK__UE_EMBARQ__FK_CE__36B12243">
+    <End Type="EMBARQUESRHEEMModel.CAT_CEDIS" Role="CAT_CEDIS" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CEDIS">
+        <PropertyRef Name="PK_CEDIS" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_CEDIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_DE__37A5467C">
+    <End Type="EMBARQUESRHEEMModel.CAT_DESTINO" Role="CAT_DESTINO" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_DESTINO">
+        <PropertyRef Name="PK_DESTINO" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_DESTINO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_PR__38996AB5">
+    <End Type="EMBARQUESRHEEMModel.CAT_PROVEEDOR" Role="CAT_PROVEEDOR" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_PROVEEDOR">
+        <PropertyRef Name="PK_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_PR__398D8EEE">
+    <End Type="EMBARQUESRHEEMModel.CAT_PROVIENE_DE" Role="CAT_PROVIENE_DE" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_PROVIENE_DE">
+        <PropertyRef Name="PK_PROVIENE_DE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_PROVIENE_DE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_ST__3A81B327">
+    <End Type="EMBARQUESRHEEMModel.CAT_STATUS_EMBARQUE" Role="CAT_STATUS_EMBARQUE" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_STATUS_EMBARQUE">
+        <PropertyRef Name="PK_STATUS_EMBARQUE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_STATUS_EMBARQUE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_ST__3B75D760">
+    <End Type="EMBARQUESRHEEMModel.CAT_STATUS_RETORNO" Role="CAT_STATUS_RETORNO" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_STATUS_RETORNO">
+        <PropertyRef Name="PK_STATUS_RETORNO" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_STATUS_RETORNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_TI__3C69FB99">
+    <End Type="EMBARQUESRHEEMModel.CAT_TIPO_EMBARQUE" Role="CAT_TIPO_EMBARQUE" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_EMBARQUE">
+        <PropertyRef Name="PK_TIPO_EMBARQUE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_TIPO_EMBARQUE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_TI__3D5E1FD2">
+    <End Type="EMBARQUESRHEEMModel.CAT_TIPO_HT" Role="CAT_TIPO_HT" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_HT">
+        <PropertyRef Name="PK_TIPO_HT" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_TIPO_HT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UE_EMBARQ__FK_TR__3E52440B">
+    <End Type="EMBARQUESRHEEMModel.CAT_TRANSPORTE" Role="CAT_TRANSPORTE" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TRANSPORTE">
+        <PropertyRef Name="PK_TRANSPORTE" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="FK_TRANSPORTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HT_DOCUME__FK_EM__4BAC3F29">
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.HT_DOCUMENTOS" Role="HT_DOCUMENTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UE_EMBARQUEHT">
+        <PropertyRef Name="PK_EMBARQUE_HT" />
+      </Principal>
+      <Dependent Role="HT_DOCUMENTOS">
+        <PropertyRef Name="FK_EMBARQUE_HT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SIS_HT_DE__FK_EM__5AEE82B9">
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.SIS_HT_DETALLE" Role="SIS_HT_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UE_EMBARQUEHT">
+        <PropertyRef Name="PK_EMBARQUE_HT" />
+      </Principal>
+      <Dependent Role="SIS_HT_DETALLE">
+        <PropertyRef Name="FK_EMBARQUE_HT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CAT_TARIFA">
+    <Key>
+      <PropertyRef Name="PK_TARIFA" />
+    </Key>
+    <Property Name="CEDIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESTINO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TRANSPORTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TARIFA" Type="Double" />
+    <Property Name="PK_TARIFA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="CAT_TIPO_ENTREGA">
+    <Key>
+      <PropertyRef Name="PK_TIPO_ENTREGA" />
+    </Key>
+    <Property Name="PK_TIPO_ENTREGA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UE_EMBARQUEHT" Relationship="EMBARQUESRHEEMModel.FK__UE_EMBARQ__TIPO___6E01572D" FromRole="CAT_TIPO_ENTREGA" ToRole="UE_EMBARQUEHT" />
+  </EntityType>
+  <Association Name="FK__UE_EMBARQ__TIPO___6E01572D">
+    <End Type="EMBARQUESRHEEMModel.CAT_TIPO_ENTREGA" Role="CAT_TIPO_ENTREGA" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Role="UE_EMBARQUEHT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPO_ENTREGA">
+        <PropertyRef Name="PK_TIPO_ENTREGA" />
+      </Principal>
+      <Dependent Role="UE_EMBARQUEHT">
+        <PropertyRef Name="TIPO_ENTREGA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HT_SUBDESTINOS">
+    <Key>
+      <PropertyRef Name="PK_SUBDESTINO" />
+    </Key>
+    <Property Name="PK_SUBDESTINO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_HT_DETALLE" Type="Int32" />
+    <Property Name="FOLIO_EMBARQUE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_DOCUMENTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION_ENTREGA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_PEDIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_ORDEN_COMPRA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_CLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_ARTICULO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="CANTIDAD_EMBARCADA" Type="Double" />
+    <Property Name="SUBD_1" Type="Double" />
+    <Property Name="SUBD_2" Type="Double" />
+    <Property Name="SUBD_3" Type="Double" />
+    <Property Name="SUBD_4" Type="Double" />
+    <Property Name="SUBD_5" Type="Double" />
+    <Property Name="SUBD_6" Type="Double" />
+    <Property Name="SUBD_7" Type="Double" />
+    <Property Name="SUBD_8" Type="Double" />
+    <Property Name="SUBD_9" Type="Double" />
+    <Property Name="SUBD_10" Type="Double" />
+    <NavigationProperty Name="SIS_HT_DETALLE" Relationship="EMBARQUESRHEEMModel.FK__HT_SUBDES__FK_HT__7B5B524B" FromRole="HT_SUBDESTINOS" ToRole="SIS_HT_DETALLE" />
+  </EntityType>
+  <Association Name="FK__HT_SUBDES__FK_HT__7B5B524B">
+    <End Type="EMBARQUESRHEEMModel.SIS_HT_DETALLE" Role="SIS_HT_DETALLE" Multiplicity="0..1" />
+    <End Type="EMBARQUESRHEEMModel.HT_SUBDESTINOS" Role="HT_SUBDESTINOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SIS_HT_DETALLE">
+        <PropertyRef Name="PK_DETALLE" />
+      </Principal>
+      <Dependent Role="HT_SUBDESTINOS">
+        <PropertyRef Name="FK_HT_DETALLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AUX_HT_SUBDESTINOS">
+    <Key>
+      <PropertyRef Name="PK_HT_SUBDESTINOS" />
+    </Key>
+    <Property Name="PK_HT_SUBDESTINOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EMBARQUE_HT" Type="Int32" />
+    <Property Name="FOLIO_EMBARQUE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_COI_POL">
+    <Key>
+      <PropertyRef Name="RDM" />
+      <PropertyRef Name="C2031" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="MONEDA" />
+      <PropertyRef Name="ESP_1" />
+      <PropertyRef Name="CR_DR" />
+      <PropertyRef Name="DESCR_ESP" />
+      <PropertyRef Name="C556" />
+      <PropertyRef Name="CERO_1" />
+      <PropertyRef Name="CERO_2" />
+      <PropertyRef Name="CERO_3" />
+      <PropertyRef Name="CERO_4" />
+      <PropertyRef Name="CBF1" />
+      <PropertyRef Name="CBF2" />
+      <PropertyRef Name="CBF3" />
+      <PropertyRef Name="CBF4" />
+      <PropertyRef Name="CBF5" />
+      <PropertyRef Name="CBF6" />
+      <PropertyRef Name="CBF7" />
+      <PropertyRef Name="CBF8" />
+      <PropertyRef Name="CBF9" />
+      <PropertyRef Name="CBF10" />
+      <PropertyRef Name="CBF11" />
+      <PropertyRef Name="CBF12" />
+      <PropertyRef Name="CBF13" />
+      <PropertyRef Name="CBF14" />
+      <PropertyRef Name="CBF15" />
+      <PropertyRef Name="CBF16" />
+      <PropertyRef Name="CBF17" />
+      <PropertyRef Name="CBF18" />
+    </Key>
+    <Property Name="RDM" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="C2031" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="MONEDA" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ESP_1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CR_DR" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="DESCR_ESP" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="C556" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CTA_1" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CTA_2" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CTA_3" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CTA_4" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CERO_1" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CERO_2" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CERO_3" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="CERO_4" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_DR1" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_CR1" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_DR2" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_CR2" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="CBF1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF2" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF3" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF4" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF5" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF6" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF7" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF8" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF9" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF10" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF11" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF12" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF13" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF14" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF15" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF16" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF17" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF18" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="AÑO" Type="Int32" />
+    <Property Name="MES" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_COI_POL_TMP">
+    <Key>
+      <PropertyRef Name="RDM" />
+      <PropertyRef Name="C2031" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="MONEDA" />
+      <PropertyRef Name="ESP_1" />
+      <PropertyRef Name="CR_DR" />
+      <PropertyRef Name="DESCR_ESP" />
+      <PropertyRef Name="C556" />
+      <PropertyRef Name="CERO_1" />
+      <PropertyRef Name="CERO_2" />
+      <PropertyRef Name="CERO_3" />
+      <PropertyRef Name="CERO_4" />
+      <PropertyRef Name="CBF1" />
+      <PropertyRef Name="CBF2" />
+      <PropertyRef Name="CBF3" />
+      <PropertyRef Name="CBF4" />
+      <PropertyRef Name="CBF5" />
+      <PropertyRef Name="CBF6" />
+      <PropertyRef Name="CBF7" />
+      <PropertyRef Name="CBF8" />
+      <PropertyRef Name="CBF9" />
+      <PropertyRef Name="CBF10" />
+      <PropertyRef Name="CBF11" />
+      <PropertyRef Name="CBF12" />
+      <PropertyRef Name="CBF13" />
+      <PropertyRef Name="CBF14" />
+      <PropertyRef Name="CBF15" />
+      <PropertyRef Name="CBF16" />
+      <PropertyRef Name="CBF17" />
+      <PropertyRef Name="CBF18" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="RDM" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="C2031" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="MONEDA" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ESP_1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CR_DR" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="DESCR_ESP" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="C556" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CTA_1" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="CTA_2" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CTA_3" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CTA_4" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CERO_1" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CERO_2" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CERO_3" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="CERO_4" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_DR1" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_CR1" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_DR2" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_CR2" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="CBF1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF2" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF3" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF4" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF5" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF6" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF7" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF8" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF9" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF10" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF11" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF12" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF13" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF14" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF15" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF16" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF17" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CBF18" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="NUM_CTA" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

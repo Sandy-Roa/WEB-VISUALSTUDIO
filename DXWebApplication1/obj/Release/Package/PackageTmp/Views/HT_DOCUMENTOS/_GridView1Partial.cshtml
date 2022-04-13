@@ -1,0 +1,181 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView1";
+        settings.CallbackRouteValues = new { Controller = "HT_DOCUMENTOS", Action = "GridView1Partial", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "HT_DOCUMENTOS", Action = "GridView1PartialAddNew", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "HT_DOCUMENTOS", Action = "GridView1PartialUpdate", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "HT_DOCUMENTOS", Action = "GridView1PartialDelete", PK_EMBARQUE_HT = ViewData["PK_EMBARQUE_HT"] };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+
+        //settings.SettingsText.PopupEditFormCaption = "Edición de la Importancia Económica de la Población";
+
+        //settings.SettingsPopup.EditForm.HorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        //settings.SettingsPopup.EditForm.VerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.SettingsPopup.EditForm.Modal = true;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        //settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "PK_HT_DOCUMENTOS";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.Columns.Add("UE_EMBARQUEHT.FOLIO_EMBARQUE", "FOLIO DEL EMBARQUE");
+        settings.Columns.Add("AUX_REMISIONES.CLAVE_DOC", "CLAVE DE LA REMISIÓN");
+
+        //settings.Columns.Add("FK_EMBARQUE_HT");
+        //settings.Columns.Add("PROCESADO");
+
+        //settings.Columns.Add("FOLIO_EMBARQUE");
+        //settings.Columns.Add("TIPO_DOCUMENTO");
+        //settings.Columns.Add("CLAVE_DOCUMENTO");
+        //settings.Columns.Add("TOTAL_PARCIAL");
+
+
+
+        //COMIENZA CUSTOM
+
+        settings.SetEditFormTemplateContent(c =>
+        {
+            var sueldo = ViewData["dataItem"] ?? c.DataItem;
+
+            ViewContext.Writer.Write("<table>" + "<tr>" + "<td>");
+
+            ViewContext.Writer.Write("<br>");
+
+            //// CEDIS
+            //Html.DevExpress().Label(
+            //    edtSettings =>
+            //    {
+            //        edtSettings.ControlStyle.CssClass = "label";
+            //        edtSettings.Text = "FOLIO DEL EMBARQUE:";
+            //        edtSettings.AssociatedControlName = "FK_EMBARQUE_HT";
+            //    }
+            //)
+            //.Render();
+
+            //Html.DevExpress().ComboBox(
+            //   edtSettings =>
+            //   {
+            //       edtSettings.Name = "FK_EMBARQUE_HT";
+            //       edtSettings.ControlStyle.CssClass = "editor";
+            //       edtSettings.Properties.TextField = "FOLIO_EMBARQUE";
+            //       edtSettings.Properties.NullText = "Campo Requerido";
+            //       edtSettings.Properties.ValueField = "PK_EMBARQUE_HT";
+            //       edtSettings.Properties.ValueType = typeof(int);
+            //       edtSettings.ShowModelErrors = true;
+            //       edtSettings.Width = Unit.Pixel(250);
+
+            //       edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+            //   }
+            //)
+            //.BindList(DXWebApplication1.Models.RHEEMDAL.GetEMBARQUEHT())
+            //.Bind(DataBinder.Eval(sueldo, "FK_EMBARQUE_HT"))
+            //.Render();
+
+            //ViewContext.Writer.Write("</br>");
+            //ViewContext.Writer.Write("</td>");
+
+
+            // CLAVE DE LA REMISIÓN
+            //ViewContext.Writer.Write("<td>");
+            //ViewContext.Writer.Write("<br>");
+
+            Html.DevExpress().Label(
+                edtSettings =>
+                {
+                    edtSettings.ControlStyle.CssClass = "label";
+                    edtSettings.Text = "CLAVE DE LA REMISIÓN:";
+                    edtSettings.AssociatedControlName = "FK_REMISIONES";
+                }
+            )
+            .Render();
+
+            Html.DevExpress().ComboBox(
+               edtSettings =>
+               {
+                   edtSettings.Name = "FK_REMISIONES";
+                   edtSettings.ControlStyle.CssClass = "editor";
+                   edtSettings.Properties.TextField = "CLAVE_DOC";
+                   edtSettings.Properties.NullText = "Campo Requerido";
+                   edtSettings.Properties.ValueField = "PK_REMISIONES";
+                   edtSettings.Properties.ValueType = typeof(int);
+                   edtSettings.ShowModelErrors = true;
+                   edtSettings.Width = Unit.Pixel(250);
+
+                   edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+               }
+            )
+            .BindList(DXWebApplication1.Models.RHEEMDAL.GetREMISIONES())
+            .Bind(DataBinder.Eval(sueldo, "FK_REMISIONES"))
+            .Render();
+
+            ViewContext.Writer.Write("</br>");
+            ViewContext.Writer.Write("</td>");
+            ViewContext.Writer.Write("</tr>");
+            ViewContext.Writer.Write("</table>");
+
+            /***************************BOTONES**********************************/
+
+            //**Botones Guardar & Cancelar
+            //ViewContext.Writer.Write("<br>");
+            ViewContext.Writer.Write("<hr noshade>");
+            Html.DevExpress().Label(
+                        edtSettings =>
+                        {
+                            edtSettings.ControlStyle.CssClass = "label";
+                        }
+                    )
+                    .Render();
+            Html.DevExpress().Button(
+                btnSettings =>
+                {
+                    btnSettings.Name = "btnUpdate";
+                    btnSettings.Text = "Guardar";
+                    btnSettings.ControlStyle.CssClass = "button";
+                    btnSettings.Images.Image.Url = "Content/Images/guardar.png";
+                    btnSettings.ImagePosition = ImagePosition.Right;
+                    btnSettings.Images.Image.Width = 16;
+                    btnSettings.ClientSideEvents.Click = "function(s, e){ GridView1" + ".UpdateEdit(); }";
+
+                }
+            )
+            .Render();
+
+            Html.DevExpress().Button(
+                btnSettings =>
+                {
+                    btnSettings.Name = "btnCancelar";
+                    btnSettings.Text = "Cancelar";
+                    btnSettings.ControlStyle.CssClass = "button";
+                    btnSettings.Images.Image.Url = "Content/Images/cancelar.png";
+                    btnSettings.ImagePosition = ImagePosition.Right;
+                    btnSettings.Style["position"] = "relative";
+                    btnSettings.Style["left"] = "5px";
+                    btnSettings.ClientSideEvents.Click = "function(s, e){ GridView1" + ".CancelEdit(); }";
+                }
+            )
+            .Render();
+
+        }); //TERMINA CUSTOM
+
+        
+        
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

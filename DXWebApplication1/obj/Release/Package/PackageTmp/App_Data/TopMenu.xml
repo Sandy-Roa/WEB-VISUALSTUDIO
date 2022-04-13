@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <group Text ="CATÁLOGOS DEL SISTEMA">
+    <!--<item Text="CEDIS" NavigateUrl="#" />
+    <item Text="DESTINO" NavigateUrl="#"  />
+    <item Text="PROVEEDOR" NavigateUrl="#"  />
+    <item Text="PROVIENE DE" NavigateUrl="#"  />
+    <item Text="STATUS EMBARQUE" NavigateUrl="#"/>
+    <item Text="STATUS RETORNO" NavigateUrl="#"/>
+    <item Text="TIPO DEVOLUCIÓN" NavigateUrl="#"/>
+    <item Text="TIPO EMBARQUE" NavigateUrl="#"/>
+    <item Text="TRANSPORTE" NavigateUrl="#"/>-->
+    <item Text="TARIFA" NavigateUrl="~/CAT_TARIFA"/>
+  </group>
+  <group Text ="HOJAS DE TRABAJO">
+    <item Text="EMBARQUE NORMAL HT" NavigateUrl="~/UE_EMBARQUEHT"/>
+    <item Text="EMBARQUE ESPECIAL HT" NavigateUrl="~/UE_EMBARQUEHTESPECIAL"/>
+    <item Text="CANTIDADES EMBARCADAS" NavigateUrl="~/SIS_HT_DETALLE"/>
+    <item Text="RETORNO HT" NavigateUrl="~/UE_RETORNOHT"/>
+    <item Text="SUBDESTINOS" NavigateUrl="~/HT_SUBDESTINOS"/>
+  </group>
+  
+   <group Text ="REPORTE">
+    <item Text="SUBDESTINOS" NavigateUrl="~/REPORTE_HT_SUBDESTINOS"/>
+     <item Text="SALIDAS MASTER 2018" NavigateUrl="~/REPORTE_EMBARQUES_GENERAL"/>
+    
+  </group>
+
+  
+</items>

@@ -1,0 +1,53 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "BorramePrueba1", Action = "GridViewPartial" };
+
+				settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "BorramePrueba1", Action = "GridViewPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "BorramePrueba1", Action = "GridViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "BorramePrueba1", Action = "GridViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "PK_EMBARQUE_HT";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+				//settings.Columns.Add("FK_CEDIS");
+				//settings.Columns.Add("FECHA_ELABORACION");
+				//settings.Columns.Add("FK_PROVEEDOR");
+				//settings.Columns.Add("FOLIO_EMBARQUE");
+				//settings.Columns.Add("FK_DESTINO");
+				settings.Columns.Add("TIPO_ENTREGA");
+				//settings.Columns.Add("TOTAL_FACTURAS");
+				//settings.Columns.Add("TOTAL_CAJAS_CARGADAS");
+				//settings.Columns.Add("OPERADOR");
+				//settings.Columns.Add("FK_PROVIENE_DE");
+				//settings.Columns.Add("FECHA_ENTREGA");
+				//settings.Columns.Add("FK_STATUS_EMBARQUE");
+				//settings.Columns.Add("FK_TIPO_EMBARQUE");
+				//settings.Columns.Add("FK_TIPO_HT");
+				//settings.Columns.Add("FK_STATUS_RETORNO");
+				//settings.Columns.Add("PADRE_HIJO");
+				settings.Columns.Add("CLAVE_PADRE");
+				settings.Columns.Add("TARIFA");
+				settings.Columns.Add("IMPORTE_REAL");
+				settings.Columns.Add("FECHA_ENTREGA_EVIDENCIA");
+				settings.Columns.Add("FOLIO_HOJA_DEVOLUCION");
+				settings.Columns.Add("DESCRIPCION_RETORNO");
+				settings.Columns.Add("RESPONSABLE");
+				settings.Columns.Add("FK_TRANSPORTE");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

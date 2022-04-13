@@ -1,0 +1,301 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView1";
+        settings.CallbackRouteValues = new { Controller = "UE_RETORNOHT", Action = "GridView1Partial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "UE_RETORNOHT", Action = "GridView1PartialAddNew"};
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "UE_RETORNOHT", Action = "GridView1PartialUpdate"};
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "UE_RETORNOHT", Action = "GridView1PartialDelete"};
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.ShowNewButtonInHeader = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "PK_EMBARQUE_HT";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.Columns.Add("FOLIO_EMBARQUE", "FOLIO DE EMBARQUE");
+        settings.Columns.Add("FECHA_ENTREGA", "FECHA DE ENTREGA");
+        settings.Columns.Add("CAT_STATUS_RETORNO.NOMBRE", "STATUS DE RETORNO");
+        settings.Columns.Add("FECHA_ENTREGA_EVIDENCIA", "FECHA DE ENTREGA DE EVIDENCIA");
+        settings.Columns.Add("FOLIO_HOJA_DEVOLUCION", "FOLIO DE HOJA DEVOLUCION");
+        settings.Columns.Add("DESCRIPCION_RETORNO", "DESCRIPCIÓN");
+
+
+
+
+
+                //COMIENZA CUSTOM
+
+                settings.SetEditFormTemplateContent(c =>
+                {
+                    var sueldo = ViewData["dataItem"] ?? c.DataItem;
+
+                    ViewContext.Writer.Write("<table>" + "<tr>" + "<td>");
+
+                    ViewContext.Writer.Write("<br>");
+
+                    // FECHA DE ENTREGA DEL EBARQUE
+                    Html.DevExpress().Label(edtSettings =>
+             {
+                 edtSettings.ControlStyle.CssClass = "label";
+                 edtSettings.Text = "FECHA DE ENTREGA DE EVIDENCIA:";
+                 edtSettings.AssociatedControlName = "FECHA_ENTREGA_EVIDENCIA";
+             }).Render();
+                    Html.DevExpress().DateEdit(edtSettings =>
+                    {
+                        edtSettings.Name = "FECHA_ENTREGA_EVIDENCIA";
+                        edtSettings.Properties.NullText = "Campo Requerido";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        edtSettings.ToolTip = "DD/MM/YYYY";
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Seleccione la Fecha de Inicio para este Programa de Trabajo" : "Cambiar Fecha de Inicio";
+
+                    }).Bind(DataBinder.Eval(sueldo, "FECHA_ENTREGA_EVIDENCIA"))
+                       .Render();
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+
+                    // FOLIO DE HOJA DE DEVOLUCIÓN
+                    ViewContext.Writer.Write("<td>");
+
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "FOLIO DE HOJA DEVOLUCIÓN:";
+                        edtSettings.AssociatedControlName = "FOLIO_HOJA_DEVOLUCION";
+                    }).Render();
+
+                    Html.DevExpress().TextBox(edtSettings =>
+                    {
+                        edtSettings.Name = "FOLIO_HOJA_DEVOLUCION";
+                        edtSettings.Properties.NullText = "";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Descripción de la Introducción para este Programa de Trabajo" : "Editar Introducción";
+                    }).Bind(DataBinder.Eval(sueldo, "FOLIO_HOJA_DEVOLUCION"))
+                      .Render();
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+                    // STATUS DEL RETORNO
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(
+                       edtSettings =>
+                       {
+                           edtSettings.ControlStyle.CssClass = "label";
+                           edtSettings.Text = "STATUS DEL RETORNO:";
+                           edtSettings.AssociatedControlName = "FK_STATUS_RETORNO";
+                       }
+                   )
+                   .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_STATUS_RETORNO";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_STATUS_RETORNO";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+                           //edtSettings.ClientEnabled = false;
+                           
+
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetSTATUSRETORNO())
+                    .Bind(DataBinder.Eval(sueldo, "FK_STATUS_RETORNO"))
+                    .Render();
+
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+
+                    // FECHA DE ENTREGA DEL EBARQUE
+                    Html.DevExpress().Label(edtSettings =>
+             {
+                 edtSettings.ControlStyle.CssClass = "label";
+                 edtSettings.Text = "FECHA DE ENTREGA:";
+                 edtSettings.AssociatedControlName = "FECHA_ENTREGA";
+             }).Render();
+                    Html.DevExpress().DateEdit(edtSettings =>
+                    {
+                        edtSettings.Name = "FECHA_ENTREGA";
+                        edtSettings.Properties.NullText = "Campo Requerido";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        edtSettings.ToolTip = "DD/MM/YYYY";
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Seleccione la Fecha de Inicio para este Programa de Trabajo" : "Cambiar Fecha de Inicio";
+
+                    }).Bind(DataBinder.Eval(sueldo, "FECHA_ENTREGA"))
+                       .Render();
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+                   
+                    ViewContext.Writer.Write("</tr>");
+                    ViewContext.Writer.Write("</table>");
+
+                    //DESCRIPCION
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<br>");
+
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "DESCRIPCIÓN:";
+                        edtSettings.AssociatedControlName = "DESCRIPCION_RETORNO";
+                    }).Render();
+
+
+                    Html.DevExpress().Memo(edtSettings =>
+                    {
+                        edtSettings.Name = "DESCRIPCION_RETORNO";
+                        edtSettings.Properties.NullText = "Descripción del Retorno";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(1060);
+                        edtSettings.Height = Unit.Pixel(50);
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Descripción de la Introducción para este Programa de Trabajo" : "Editar Introducción";
+                    }).Bind(DataBinder.Eval(sueldo, "DESCRIPCION_RETORNO"))
+                      .Render();
+
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</tr>");
+                    
+
+                    /***************************BOTNES**********************************/
+
+
+                    //**Botones Guardar & Cancelar
+                    //ViewContext.Writer.Write("<br>");
+                    ViewContext.Writer.Write("<hr noshade>");
+                    Html.DevExpress().Label(
+                                edtSettings =>
+                                {
+                                    edtSettings.ControlStyle.CssClass = "label";
+                                }
+                            )
+                            .Render();
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnUpdat";
+                            btnSettings.Text = "Guardar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            btnSettings.Images.Image.Url = "Content/Images/guardar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Images.Image.Width = 16;
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView1" + ".UpdateEdit(); }";
+
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnCance";
+                            btnSettings.Text = "Cancelar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            btnSettings.Images.Image.Url = "Content/Images/cancelar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Style["position"] = "relative";
+                            btnSettings.Style["left"] = "5px";
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView1" + ".CancelEdit(); }";
+                        }
+                    )
+                    .Render();
+
+                    
+
+                    /***********************TABS*************************************/
+                    if (c.KeyValue != null)
+                    {
+                        Html.DevExpress().PageControl(PCsettings =>
+                        {
+                            PCsettings.Name = "pcScrolling";
+                            PCsettings.Width = Unit.Percentage(100);
+                            PCsettings.Height = 300;
+                            PCsettings.EnableTabScrolling = true;
+                            PCsettings.TabAlign = TabAlign.Justify;
+                            PCsettings.Styles.Tab.CssClass = "scrolling_Tab";
+
+                            PCsettings.Name = "pcFeatures";
+                            //PCsettings.ClientVisible = c.KeyValue == null ? false : true;
+
+                            //HT DOCUMENTOS
+
+                            PCsettings.TabPages.Add("DETALLE").SetContent(() =>
+                            {
+                                ViewContext.Writer.Write("<H3>DETALLE DE LA DEVOLUCIÓN</H3>");
+                                //  Html.RenderPartial("~/Views/Status_Venta/_GridViewPartial.cshtml"
+
+                                //    , new ViewDataDictionary
+
+
+
+                                //{
+                                //{ "IdVentas", DataBinder.Eval(sueldo, "PK_IdVentas") }
+                                //}
+
+
+                                Html.RenderAction("GridView3Partial", "SIS_HT_DETALLE_RETORNO", new { PK_EMBARQUE_HT = DataBinder.Eval(sueldo, "PK_EMBARQUE_HT") });
+
+
+                            });
+
+
+                        }).GetHtml();//Terminan los Tabs
+
+                    }//CIERRE DEL IF PARA HABILITAR TAB
+                }); //TERMINA CUSTOM
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

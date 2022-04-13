@@ -1,0 +1,526 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "UE_EMBARQUEHT", Action = "GridViewPartial" };
+
+				settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "UE_EMBARQUEHT", Action = "GridViewPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "UE_EMBARQUEHT", Action = "GridViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "UE_EMBARQUEHT", Action = "GridViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "PK_EMBARQUE_HT";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+                settings.Columns.Add("CAT_CEDIS.NOMBRE","CEDIS");
+                settings.Columns.Add("FECHA_ELABORACION", "FECHA DE ELABORACION");
+                settings.Columns.Add("CAT_PROVEEDOR.NOMBRE", "PROVEEDOR");
+                settings.Columns.Add("FOLIO_EMBARQUE", "FOLIO DE EMBARQUE");
+                settings.Columns.Add("CAT_DESTINO.NOMBRE", "DESTINO");
+                settings.Columns.Add("CAT_TRANSPORTE.NOMBRE", "TRANSPORTE");
+                //	settings.Columns.Add("TIPO_ENTREGA");
+                settings.Columns.Add("TOTAL_FACTURAS", "TOTAL DE FACTURAS");
+                settings.Columns.Add("TOTAL_CAJAS_CARGADAS", "TOTAL DE CAJAS CARGADAS");
+                settings.Columns.Add("OPERADOR");
+                settings.Columns.Add("CAT_PROVIENE_DE.NOMBRE", "PROVIENE DE");
+                settings.Columns.Add("FECHA_ENTREGA", "FECHA DE ENTREGA");
+                settings.Columns.Add("CAT_STATUS_EMBARQUE.NOMBRE", "STATUS DE EMBARQUE");
+                settings.Columns.Add("CAT_TIPO_EMBARQUE.NOMBRE","TIPO DE EMBARQUE");
+
+                //AQUÍ ES DONDE PONGO CÓDIGO DE MÁS
+
+
+                //COMIENZA CUSTOM
+
+                settings.SetEditFormTemplateContent(c =>
+                {
+                    var sueldo = ViewData["dataItem"] ?? c.DataItem;
+
+                    ViewContext.Writer.Write("<table>" + "<tr>" + "<td>");
+
+                    ViewContext.Writer.Write("<br>");
+                    
+                    // CEDIS
+                    Html.DevExpress().Label(
+                        edtSettings =>
+                        {
+                            edtSettings.ControlStyle.CssClass = "label";
+                            edtSettings.Text = "CEDIS:";
+                            edtSettings.AssociatedControlName = "FK_CEDIS";
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_CEDIS";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_CEDIS";
+                           settings.Items.Add(model => model.Name, CommonDemoHelper.FormLayoutItemSettingsMethod).HelpText = "Must be under 50 characters";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+                           
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+                          
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetCEDIS())
+                    .Bind(DataBinder.Eval(sueldo, "FK_CEDIS"))
+                    .Render();
+                    
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+
+                    // TIPO DE EMBARQUE
+                    ViewContext.Writer.Write("<td>");
+
+                    ViewContext.Writer.Write("<br>");
+
+
+                    Html.DevExpress().Label(
+                        edtSettings =>
+                        {
+                            edtSettings.ControlStyle.CssClass = "label";
+                            edtSettings.Text = "TIPO DE EMBARQUE:";
+                            edtSettings.AssociatedControlName = "FK_TIPO_EMBARQUE";
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_TIPO_EMBARQUE";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_TIPO_EMBARQUE";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetTIPOEMBARQUE())
+                    .Bind(DataBinder.Eval(sueldo, "FK_TIPO_EMBARQUE"))
+                    .Render();
+                   
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+
+                    // PROVIENE DE 
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(
+                       edtSettings =>
+                       {
+                           edtSettings.ControlStyle.CssClass = "label";
+                           edtSettings.Text = "PROVIENE DE:";
+                           edtSettings.AssociatedControlName = "FK_PROVIENE_DE";
+                       }
+                   )
+                   .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_PROVIENE_DE";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_PROVIENE_DE";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetPROVIENEDE())
+                    .Bind(DataBinder.Eval(sueldo, "FK_PROVIENE_DE"))
+                    .Render();
+
+              
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+
+                    //PROVEEDOR
+
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+
+                    Html.DevExpress().Label(
+                     edtSettings =>
+                     {
+                         edtSettings.ControlStyle.CssClass = "label";
+                         edtSettings.Text = "PROVEEDOR:";
+                         edtSettings.AssociatedControlName = "FK_PROVEEDOR";
+                     }
+                 )
+                 .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_PROVEEDOR";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_PROVEEDOR";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetPROVEEDOR())
+                    .Bind(DataBinder.Eval(sueldo, "FK_PROVEEDOR"))
+                    .Render();
+                    
+                    ViewContext.Writer.Write("</td>");
+                    
+                    
+                    //DESTINO
+
+                    ViewContext.Writer.Write("<td>");
+
+                    Html.DevExpress().Label(
+                   edtSettings =>
+                   {
+                       edtSettings.ControlStyle.CssClass = "label";
+                       edtSettings.Text = "DESTINO:";
+                       edtSettings.AssociatedControlName = "FK_DESTINO";
+                   }
+               )
+               .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_DESTINO";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_DESTINO";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetDESTINO())
+                    .Bind(DataBinder.Eval(sueldo, "FK_DESTINO"))
+                    .Render();
+                   
+                    ViewContext.Writer.Write("</td>");
+
+
+                    //TRANSPORTE
+                    ViewContext.Writer.Write("<td>");
+                    Html.DevExpress().Label(
+                  edtSettings =>
+                  {
+                      edtSettings.ControlStyle.CssClass = "label";
+                      edtSettings.Text = "TRANSPORTE:";
+                      edtSettings.AssociatedControlName = "FK_TRANSPORTE";
+                  }
+              )
+              .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_TRANSPORTE";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_TRANSPORTE";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetTRANSPORTE())
+                    .Bind(DataBinder.Eval(sueldo, "FK_TRANSPORTE"))
+                    .Render();
+
+                  
+
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+
+                    //TIPO ENTREGA
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+
+
+                    Html.DevExpress().Label(
+                        edtSettings =>
+                        {
+                            edtSettings.ControlStyle.CssClass = "label";
+                            edtSettings.Text = "TIPO DE NTREGA:";
+                            edtSettings.AssociatedControlName = "TIPO_ENTREGA";
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "TIPO_ENTREGA";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_TIPO_ENTREGA";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetTIPOENTREGA())
+                    .Bind(DataBinder.Eval(sueldo, "TIPO_ENTREGA"))
+                    .Render();
+
+                    ViewContext.Writer.Write("</td>");
+
+                    //OPERADOR
+                    ViewContext.Writer.Write("<td>");
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "OPERADOR:";
+                        edtSettings.AssociatedControlName = "OPERADOR";
+                    }).Render();
+
+                    Html.DevExpress().TextBox(edtSettings =>
+                    {
+                        edtSettings.Name = "OPERADOR";
+                        edtSettings.Properties.NullText = "Nombre del Operador";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        // edtSettings.Height = Unit.Pixel(50);
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Descripción de la Introducción para este Programa de Trabajo" : "Editar Introducción";
+                    }).Bind(DataBinder.Eval(sueldo, "OPERADOR"))
+                      .Render();
+
+                    ViewContext.Writer.Write("</td>");
+
+                    //STATUS HT
+                    ViewContext.Writer.Write("<td>");
+                    Html.DevExpress().Label(
+                  edtSettings =>
+                  {
+                      edtSettings.ControlStyle.CssClass = "label";
+                      edtSettings.Text = "STATUS DE EMBARQUE:";
+                      edtSettings.AssociatedControlName = "FK_STATUS_EMBARQUE";
+                  }
+              )
+              .Render();
+
+                    Html.DevExpress().ComboBox(
+                       edtSettings =>
+                       {
+                           edtSettings.Name = "FK_STATUS_EMBARQUE";
+                           edtSettings.ControlStyle.CssClass = "editor";
+                           edtSettings.Properties.TextField = "NOMBRE";
+                           edtSettings.Properties.NullText = "Campo Requerido";
+                           edtSettings.Properties.ValueField = "PK_STATUS_EMBARQUE";
+                           edtSettings.Properties.ValueType = typeof(int);
+                           edtSettings.ShowModelErrors = true;
+                           edtSettings.Width = Unit.Pixel(250);
+
+                           edtSettings.Properties.IncrementalFilteringDelay = 5;
+
+
+                       }
+                    )
+                    .BindList(DXWebApplication1.Models.RHEEMDAL.GetSTATUSEMBARQUE())
+                    .Bind(DataBinder.Eval(sueldo, "FK_STATUS_EMBARQUE"))
+                    .Render();
+
+                   
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+
+                    //
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+                    
+                    ViewContext.Writer.Write("</td>");
+
+                    //
+                    ViewContext.Writer.Write("<td>");
+                   
+                    ViewContext.Writer.Write("</td>");
+
+                    //
+                    ViewContext.Writer.Write("<td>");
+                   
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+
+                    //
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+                   
+                    ViewContext.Writer.Write("</td>");
+                    
+                    
+                    ViewContext.Writer.Write("</tr>");
+                    ViewContext.Writer.Write("</table>");
+
+                    /***************************BOTNES**********************************/
+                    
+                     
+                    //**Botones Guardar & Cancelar
+                    //ViewContext.Writer.Write("<br>");
+                    ViewContext.Writer.Write("<hr noshade>");
+                    Html.DevExpress().Label(
+                                edtSettings =>
+                                {
+                                    edtSettings.ControlStyle.CssClass = "label";
+                                }
+                            )
+                            .Render();
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnUpdat";
+                            btnSettings.Text = "Guardar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            //btnSettings.Images.Image.Url = "Content/Images/guardar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Images.Image.Width = 16;
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView" + ".UpdateEdit(); }";
+
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnCance";
+                            btnSettings.Text = "Cancelar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            //btnSettings.Images.Image.Url = "Content/Images/cancelar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Style["position"] = "relative";
+                            btnSettings.Style["left"] = "5px";
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView" + ".CancelEdit(); }";
+                        }
+                    )
+                    .Render();
+
+                    /****************************BOTON IMPRIMIR*****************************/
+                    string ControladorReporte = "ReporteEmbarquesHT";
+                  
+                    ViewContext.Writer.Write("<td>");
+                    using (Html.BeginForm("Index", ControladorReporte, new { PK_EMBARQUE_HT = c.KeyValue == null ? "-1" : c.KeyValue.ToString() }, FormMethod.Post))
+                   
+                    {
+                        Html.DevExpress().Button(btnSettings =>
+                        {
+                            btnSettings.Name = "btnImprimir";
+                            btnSettings.Text = "Vista Previa";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            //btnSettings.Images.Image.Url = "/Content/Images/ico_print.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Images.Image.Width = 16;
+                            btnSettings.Style["position"] = "relative";
+                            btnSettings.Style["left"] = "10px";
+                            btnSettings.ClientVisible = c.KeyValue == null ? false : true;
+                            btnSettings.UseSubmitBehavior = true;
+                        }).Render();
+                    }
+                   ViewContext.Writer.Write("</td>");
+
+                    /***********************TABS*************************************/
+                   if (c.KeyValue != null)
+                   {
+                       Html.DevExpress().PageControl(PCsettings =>
+                       {
+                           PCsettings.Name = "pcScrolling";
+                           PCsettings.Width = Unit.Percentage(100);
+                           PCsettings.Height = 300;
+                           PCsettings.EnableTabScrolling = true;
+                           PCsettings.TabAlign = TabAlign.Justify;
+                           PCsettings.Styles.Tab.CssClass = "scrolling_Tab";
+
+                           PCsettings.Name = "pcFeatures";
+                           //PCsettings.ClientVisible = c.KeyValue == null ? false : true;
+
+                           //HT DOCUMENTOS
+
+                           PCsettings.TabPages.Add("HT_DOCUMENTOS").SetContent(() =>
+                           {
+                               ViewContext.Writer.Write("<H3>HT_DOCUMENTOS</H3>");
+                               //  Html.RenderPartial("~/Views/Status_Venta/_GridViewPartial.cshtml"
+
+                               //    , new ViewDataDictionary
+
+
+
+                               //{
+                               //{ "IdVentas", DataBinder.Eval(sueldo, "PK_IdVentas") }
+                               //}
+
+                              
+                               Html.RenderAction("GridView1Partial", "HT_DOCUMENTOS", new { PK_EMBARQUE_HT = DataBinder.Eval(sueldo, "PK_EMBARQUE_HT") });
+                                                                                      
+                                    
+                           });
+
+
+                       }).GetHtml();//Terminan los Tabs
+
+                   }//CIERRE DEL IF PARA HABILITAR TAB
+                }); //TERMINA CUSTOM
+
+        
+        
+      
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

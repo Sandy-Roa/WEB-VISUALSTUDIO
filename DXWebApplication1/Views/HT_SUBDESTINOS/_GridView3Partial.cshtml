@@ -1,0 +1,515 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "GridView3";
+        settings.CallbackRouteValues = new { Controller = "HT_SUBDESTINOS", Action = "GridView3Partial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "HT_SUBDESTINOS", Action = "GridView3PartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "HT_SUBDESTINOS", Action = "GridView3PartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "HT_SUBDESTINOS", Action = "GridView3PartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.ShowNewButton = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "PK_SUBDESTINO";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.Columns.Add("FOLIO_EMBARQUE");
+        settings.Columns.Add("CLAVE_DOCUMENTO");
+        settings.Columns.Add("DIRECCION_ENTREGA");
+        settings.Columns.Add("CLAVE_PEDIDO");
+        settings.Columns.Add("CLAVE_ORDEN_COMPRA");
+        settings.Columns.Add("CLAVE_CLIENTE");
+        settings.Columns.Add("CLAVE_ARTICULO");
+        settings.Columns.Add("CANTIDAD_EMBARCADA");
+        settings.Columns.Add("SUBD_1");
+        settings.Columns.Add("SUBD_2");
+        settings.Columns.Add("SUBD_3");
+        settings.Columns.Add("SUBD_4");
+        settings.Columns.Add("SUBD_5");
+        settings.Columns.Add("SUBD_6");
+        settings.Columns.Add("SUBD_7");
+        settings.Columns.Add("SUBD_8");
+        settings.Columns.Add("SUBD_9");
+        settings.Columns.Add("SUBD_10");
+
+
+
+
+
+        //COMIENZA CUSTOM
+
+        settings.SetEditFormTemplateContent(c =>
+        {
+            var sueldo = ViewData["dataItem"] ?? c.DataItem;
+
+            ViewContext.Writer.Write("<table>" + "<tr>" + "<td>");
+
+            ViewContext.Writer.Write("<br>");
+
+            // CEDIS
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "CLAVE DE ARTÍCULO:";
+                edtSettings.AssociatedControlName = "CLAVE_ARTICULO";
+            }).Render();
+
+            Html.DevExpress().TextBox(edtSettings =>
+            {
+                edtSettings.Name = "CLAVE_ARTICULO";
+                edtSettings.Properties.NullText = "";
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                edtSettings.ClientEnabled = false;
+            }).Bind(DataBinder.Eval(sueldo, "CLAVE_ARTICULO"))
+              .Render();
+
+            ViewContext.Writer.Write("</br>");
+            ViewContext.Writer.Write("</td>");
+
+
+            // TIPO DE EMBARQUE
+            ViewContext.Writer.Write("<td>");
+
+            ViewContext.Writer.Write("<br>");
+
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "CANTIDAD EMBARCADA:";
+                edtSettings.AssociatedControlName = "CANTIDAD_EMBARCADA";
+            }).Render();
+
+            Html.DevExpress().TextBox(edtSettings =>
+            {
+                edtSettings.Name = "CANTIDAD_EMBARCADA";
+                edtSettings.Properties.NullText = "";
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                edtSettings.ClientEnabled = false;
+            }).Bind(DataBinder.Eval(sueldo, "CANTIDAD_EMBARCADA"))
+              .Render();
+
+            ViewContext.Writer.Write("</br>");
+            ViewContext.Writer.Write("</td>");
+
+            // PROVIENE DE
+            ViewContext.Writer.Write("<td>");
+            ViewContext.Writer.Write("<br>");
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 1:";
+                edtSettings.AssociatedControlName = "SUBD_1";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_1";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_1"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</br>");
+            ViewContext.Writer.Write("</td>");
+            ViewContext.Writer.Write("</tr>");
+
+            //PROVEEDOR
+
+            ViewContext.Writer.Write("<tr>");
+            ViewContext.Writer.Write("<td>");
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 2:";
+                edtSettings.AssociatedControlName = "SUBD_2";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_2";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_2"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+
+
+            //DESTINO
+
+            ViewContext.Writer.Write("<td>");
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 3:";
+                edtSettings.AssociatedControlName = "SUBD_3";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_3";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_3"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+
+
+            //TRANSPORTE
+            ViewContext.Writer.Write("<td>");
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 4:";
+                edtSettings.AssociatedControlName = "SUBD_4";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_4";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_4"))
+            .Render();
+
+
+
+            ViewContext.Writer.Write("</td>");
+            ViewContext.Writer.Write("</tr>");
+
+            //TIPO ENTREGA
+            ViewContext.Writer.Write("<tr>");
+            ViewContext.Writer.Write("<td>");
+            ViewContext.Writer.Write("<br>");
+
+
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 5:";
+                edtSettings.AssociatedControlName = "SUBD_5";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_5";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_5"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+
+            //OPERADOR
+            ViewContext.Writer.Write("<td>");
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 6:";
+                edtSettings.AssociatedControlName = "SUBD_6";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_6";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_6"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+
+            //STATUS HT
+            ViewContext.Writer.Write("<td>");
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 7:";
+                edtSettings.AssociatedControlName = "SUBD_7";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_7";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_7"))
+            .Render();
+
+
+
+            ViewContext.Writer.Write("</td>");
+            ViewContext.Writer.Write("</tr>");
+
+            //
+            ViewContext.Writer.Write("<tr>");
+            ViewContext.Writer.Write("<td>");
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 8:";
+                edtSettings.AssociatedControlName = "SUBD_8";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_8";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_8"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+
+            //
+            ViewContext.Writer.Write("<td>");
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 9:";
+                edtSettings.AssociatedControlName = "SUBD_9";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_9";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_9"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+
+            //
+            ViewContext.Writer.Write("<td>");
+            Html.DevExpress().Label(edtSettings =>
+            {
+                edtSettings.ControlStyle.CssClass = "label";
+                edtSettings.Text = "SUBDESTINO 10:";
+                edtSettings.AssociatedControlName = "SUBD_10";
+            }).Render();
+
+            Html.DevExpress().SpinEdit(edtSettings =>
+            {
+                edtSettings.Name = "SUBD_10";
+                edtSettings.Properties.MinValue = 0;
+                edtSettings.Properties.MaxValue = 999999999;
+                edtSettings.Properties.DecimalPlaces = 0;
+                edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                edtSettings.Properties.Increment = 1M;
+                edtSettings.Properties.LargeIncrement = 1;
+                edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                edtSettings.ControlStyle.CssClass = "editor";
+                edtSettings.ShowModelErrors = true;
+                edtSettings.Width = Unit.Pixel(250);
+                // edtSettings.Properties.DisplayFormatString = "c";
+                // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+            }).Bind(DataBinder.Eval(sueldo, "SUBD_10"))
+            .Render();
+
+
+            ViewContext.Writer.Write("</td>");
+            ViewContext.Writer.Write("</tr>");
+
+            //
+            ViewContext.Writer.Write("<tr>");
+            ViewContext.Writer.Write("<td>");
+
+            ViewContext.Writer.Write("</td>");
+
+
+            ViewContext.Writer.Write("</tr>");
+            ViewContext.Writer.Write("</table>");
+
+            /***************************BOTNES**********************************/
+
+
+            //**Botones Guardar & Cancelar
+            //ViewContext.Writer.Write("<br>");
+            ViewContext.Writer.Write("<hr noshade>");
+            Html.DevExpress().Label(
+                        edtSettings =>
+                        {
+                            edtSettings.ControlStyle.CssClass = "label";
+                        }
+                    )
+                    .Render();
+            Html.DevExpress().Button(
+                btnSettings =>
+                {
+                    btnSettings.Name = "btnUpdat";
+                    btnSettings.Text = "Guardar";
+                    btnSettings.ControlStyle.CssClass = "button";
+                    btnSettings.Images.Image.Url = "Content/Images/guardar.png";
+                    btnSettings.ImagePosition = ImagePosition.Right;
+                    btnSettings.Images.Image.Width = 16;
+                    btnSettings.ClientSideEvents.Click = "function(s, e){ GridView3" + ".UpdateEdit(); }";
+
+                }
+            )
+            .Render();
+
+            Html.DevExpress().Button(
+                btnSettings =>
+                {
+                    btnSettings.Name = "btnCance";
+                    btnSettings.Text = "Cancelar";
+                    btnSettings.ControlStyle.CssClass = "button";
+                    btnSettings.Images.Image.Url = "Content/Images/cancelar.png";
+                    btnSettings.ImagePosition = ImagePosition.Right;
+                    btnSettings.Style["position"] = "relative";
+                    btnSettings.Style["left"] = "5px";
+                    btnSettings.ClientSideEvents.Click = "function(s, e){ GridView3" + ".CancelEdit(); }";
+                }
+            )
+            .Render();
+
+            ///****************************BOTON IMPRIMIR*****************************/
+            //string ControladorReporte = "ReporteEmbarquesHT";
+
+            //ViewContext.Writer.Write("<td>");
+            //using (Html.BeginForm("Index", ControladorReporte, new { PK_EMBARQUE_HT = c.KeyValue == null ? "-1" : c.KeyValue.ToString() }, FormMethod.Post))
+            //{
+            //    Html.DevExpress().Button(btnSettings =>
+            //    {
+            //        btnSettings.Name = "btnImprimir";
+            //        btnSettings.Text = "Vista Previa";
+            //        btnSettings.ControlStyle.CssClass = "button";
+            //        btnSettings.Images.Image.Url = "/Content/Images/ico_print.png";
+            //        btnSettings.ImagePosition = ImagePosition.Right;
+            //        btnSettings.Images.Image.Width = 16;
+            //        btnSettings.Style["position"] = "relative";
+            //        btnSettings.Style["left"] = "10px";
+            //        btnSettings.ClientVisible = c.KeyValue == null ? false : true;
+            //        btnSettings.UseSubmitBehavior = true;
+            //    }).Render();
+            //}
+            ViewContext.Writer.Write("</td>");
+        }); //TERMINA CUSTOM
+
+
+
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

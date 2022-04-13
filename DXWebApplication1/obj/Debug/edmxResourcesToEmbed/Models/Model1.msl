@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EMBARQUESRHEEMModelStoreContainer" CdmEntityContainer="EMBARQUESRHEEMEntities">
+    <EntitySetMapping Name="CAT_CEDIS">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_CEDIS">
+        <MappingFragment StoreEntitySet="CAT_CEDIS">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_CEDIS" ColumnName="PK_CEDIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_DESTINO">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_DESTINO">
+        <MappingFragment StoreEntitySet="CAT_DESTINO">
+          <ScalarProperty Name="TIPO_P" ColumnName="TIPO_P" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_DESTINO" ColumnName="PK_DESTINO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_PROVEEDOR">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_PROVEEDOR">
+        <MappingFragment StoreEntitySet="CAT_PROVEEDOR">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_PROVEEDOR" ColumnName="PK_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_PROVIENE_DE">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_PROVIENE_DE">
+        <MappingFragment StoreEntitySet="CAT_PROVIENE_DE">
+          <ScalarProperty Name="DISPONIBLE" ColumnName="DISPONIBLE" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_PROVIENE_DE" ColumnName="PK_PROVIENE_DE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_STATUS_EMBARQUE">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_STATUS_EMBARQUE">
+        <MappingFragment StoreEntitySet="CAT_STATUS_EMBARQUE">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_STATUS_EMBARQUE" ColumnName="PK_STATUS_EMBARQUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_STATUS_RETORNO">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_STATUS_RETORNO">
+        <MappingFragment StoreEntitySet="CAT_STATUS_RETORNO">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_STATUS_RETORNO" ColumnName="PK_STATUS_RETORNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPO_DEVOLUCION">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_TIPO_DEVOLUCION">
+        <MappingFragment StoreEntitySet="CAT_TIPO_DEVOLUCION">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_TIPO_DEVOLUCION" ColumnName="PK_TIPO_DEVOLUCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPO_EMBARQUE">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_TIPO_EMBARQUE">
+        <MappingFragment StoreEntitySet="CAT_TIPO_EMBARQUE">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_TIPO_EMBARQUE" ColumnName="PK_TIPO_EMBARQUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPO_HT">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_TIPO_HT">
+        <MappingFragment StoreEntitySet="CAT_TIPO_HT">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PK_TIPO_HT" ColumnName="PK_TIPO_HT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TRANSPORTE">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_TRANSPORTE">
+        <MappingFragment StoreEntitySet="CAT_TRANSPORTE">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_TRANSPORTE" ColumnName="PK_TRANSPORTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HT_DOCUMENTOS">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.HT_DOCUMENTOS">
+        <MappingFragment StoreEntitySet="HT_DOCUMENTOS">
+          <ScalarProperty Name="FK_REMISIONES" ColumnName="FK_REMISIONES" />
+          <ScalarProperty Name="PROCESADO" ColumnName="PROCESADO" />
+          <ScalarProperty Name="TOTAL_PARCIAL" ColumnName="TOTAL_PARCIAL" />
+          <ScalarProperty Name="CLAVE_DOCUMENTO" ColumnName="CLAVE_DOCUMENTO" />
+          <ScalarProperty Name="TIPO_DOCUMENTO" ColumnName="TIPO_DOCUMENTO" />
+          <ScalarProperty Name="FOLIO_EMBARQUE" ColumnName="FOLIO_EMBARQUE" />
+          <ScalarProperty Name="FK_EMBARQUE_HT" ColumnName="FK_EMBARQUE_HT" />
+          <ScalarProperty Name="PK_HT_DOCUMENTOS" ColumnName="PK_HT_DOCUMENTOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUX_FOLIOS">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.AUX_FOLIOS">
+        <MappingFragment StoreEntitySet="AUX_FOLIOS">
+          <ScalarProperty Name="PK_FOLIOS" ColumnName="PK_FOLIOS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ULT_FOLIO" ColumnName="ULT_FOLIO" />
+          <ScalarProperty Name="CEDIS" ColumnName="CEDIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIS_HT_DETALLE">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.SIS_HT_DETALLE">
+        <MappingFragment StoreEntitySet="SIS_HT_DETALLE">
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="FK_EMBARQUE_HT" ColumnName="FK_EMBARQUE_HT" />
+          <ScalarProperty Name="CLAVE_NOTA_CREDITO" ColumnName="CLAVE_NOTA_CREDITO" />
+          <ScalarProperty Name="DESCRIPCION_DEVOLUCIÓN" ColumnName="DESCRIPCION_DEVOLUCIÓN" />
+          <ScalarProperty Name="FK_TIPO_DEVOLUCION" ColumnName="FK_TIPO_DEVOLUCION" />
+          <ScalarProperty Name="CANTIDAD_DEVUELTA" ColumnName="CANTIDAD_DEVUELTA" />
+          <ScalarProperty Name="CANTIDAD_EMBARCADA" ColumnName="CANTIDAD_EMBARCADA" />
+          <ScalarProperty Name="CANTIDAD_ORIGINAL" ColumnName="CANTIDAD_ORIGINAL" />
+          <ScalarProperty Name="CLAVE_ARTICULO" ColumnName="CLAVE_ARTICULO" />
+          <ScalarProperty Name="CLAVE_CLIENTE" ColumnName="CLAVE_CLIENTE" />
+          <ScalarProperty Name="CLAVE_ORDEN_COMPRA" ColumnName="CLAVE_ORDEN_COMPRA" />
+          <ScalarProperty Name="CLAVE_FACTURA" ColumnName="CLAVE_FACTURA" />
+          <ScalarProperty Name="CLAVE_PEDIDO" ColumnName="CLAVE_PEDIDO" />
+          <ScalarProperty Name="CLAVE_COTIZACION" ColumnName="CLAVE_COTIZACION" />
+          <ScalarProperty Name="DIRECCION_ENTREGA" ColumnName="DIRECCION_ENTREGA" />
+          <ScalarProperty Name="CLAVE_DOCUMENTO" ColumnName="CLAVE_DOCUMENTO" />
+          <ScalarProperty Name="FOLIO_EMBARQUE" ColumnName="FOLIO_EMBARQUE" />
+          <ScalarProperty Name="PK_DETALLE" ColumnName="PK_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UE_EMBARQUEHT">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.UE_EMBARQUEHT">
+        <MappingFragment StoreEntitySet="UE_EMBARQUEHT">
+          <ScalarProperty Name="FK_TRANSPORTE" ColumnName="FK_TRANSPORTE" />
+          <ScalarProperty Name="RESPONSABLE" ColumnName="RESPONSABLE" />
+          <ScalarProperty Name="DESCRIPCION_RETORNO" ColumnName="DESCRIPCION_RETORNO" />
+          <ScalarProperty Name="FOLIO_HOJA_DEVOLUCION" ColumnName="FOLIO_HOJA_DEVOLUCION" />
+          <ScalarProperty Name="FECHA_ENTREGA_EVIDENCIA" ColumnName="FECHA_ENTREGA_EVIDENCIA" />
+          <ScalarProperty Name="IMPORTE_REAL" ColumnName="IMPORTE_REAL" />
+          <ScalarProperty Name="TARIFA" ColumnName="TARIFA" />
+          <ScalarProperty Name="CLAVE_PADRE" ColumnName="CLAVE_PADRE" />
+          <ScalarProperty Name="PADRE_HIJO" ColumnName="PADRE_HIJO" />
+          <ScalarProperty Name="FK_STATUS_RETORNO" ColumnName="FK_STATUS_RETORNO" />
+          <ScalarProperty Name="FK_TIPO_HT" ColumnName="FK_TIPO_HT" />
+          <ScalarProperty Name="FK_TIPO_EMBARQUE" ColumnName="FK_TIPO_EMBARQUE" />
+          <ScalarProperty Name="FK_STATUS_EMBARQUE" ColumnName="FK_STATUS_EMBARQUE" />
+          <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+          <ScalarProperty Name="FK_PROVIENE_DE" ColumnName="FK_PROVIENE_DE" />
+          <ScalarProperty Name="OPERADOR" ColumnName="OPERADOR" />
+          <ScalarProperty Name="TOTAL_CAJAS_CARGADAS" ColumnName="TOTAL_CAJAS_CARGADAS" />
+          <ScalarProperty Name="TOTAL_FACTURAS" ColumnName="TOTAL_FACTURAS" />
+          <ScalarProperty Name="TIPO_ENTREGA" ColumnName="TIPO_ENTREGA" />
+          <ScalarProperty Name="FK_DESTINO" ColumnName="FK_DESTINO" />
+          <ScalarProperty Name="FOLIO_EMBARQUE" ColumnName="FOLIO_EMBARQUE" />
+          <ScalarProperty Name="FK_PROVEEDOR" ColumnName="FK_PROVEEDOR" />
+          <ScalarProperty Name="FECHA_ELABORACION" ColumnName="FECHA_ELABORACION" />
+          <ScalarProperty Name="FK_CEDIS" ColumnName="FK_CEDIS" />
+          <ScalarProperty Name="PK_EMBARQUE_HT" ColumnName="PK_EMBARQUE_HT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TARIFA">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_TARIFA">
+        <MappingFragment StoreEntitySet="CAT_TARIFA">
+          <ScalarProperty Name="PK_TARIFA" ColumnName="PK_TARIFA" />
+          <ScalarProperty Name="TARIFA" ColumnName="TARIFA" />
+          <ScalarProperty Name="TRANSPORTE" ColumnName="TRANSPORTE" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="DESTINO" ColumnName="DESTINO" />
+          <ScalarProperty Name="CEDIS" ColumnName="CEDIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPO_ENTREGA">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_TIPO_ENTREGA">
+        <MappingFragment StoreEntitySet="CAT_TIPO_ENTREGA">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_TIPO_ENTREGA" ColumnName="PK_TIPO_ENTREGA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HT_SUBDESTINOS">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.HT_SUBDESTINOS">
+        <MappingFragment StoreEntitySet="HT_SUBDESTINOS">
+          <ScalarProperty Name="SUBD_10" ColumnName="SUBD_10" />
+          <ScalarProperty Name="SUBD_9" ColumnName="SUBD_9" />
+          <ScalarProperty Name="SUBD_8" ColumnName="SUBD_8" />
+          <ScalarProperty Name="SUBD_7" ColumnName="SUBD_7" />
+          <ScalarProperty Name="SUBD_6" ColumnName="SUBD_6" />
+          <ScalarProperty Name="SUBD_5" ColumnName="SUBD_5" />
+          <ScalarProperty Name="SUBD_4" ColumnName="SUBD_4" />
+          <ScalarProperty Name="SUBD_3" ColumnName="SUBD_3" />
+          <ScalarProperty Name="SUBD_2" ColumnName="SUBD_2" />
+          <ScalarProperty Name="SUBD_1" ColumnName="SUBD_1" />
+          <ScalarProperty Name="CANTIDAD_EMBARCADA" ColumnName="CANTIDAD_EMBARCADA" />
+          <ScalarProperty Name="CLAVE_ARTICULO" ColumnName="CLAVE_ARTICULO" />
+          <ScalarProperty Name="CLAVE_CLIENTE" ColumnName="CLAVE_CLIENTE" />
+          <ScalarProperty Name="CLAVE_ORDEN_COMPRA" ColumnName="CLAVE_ORDEN_COMPRA" />
+          <ScalarProperty Name="CLAVE_PEDIDO" ColumnName="CLAVE_PEDIDO" />
+          <ScalarProperty Name="DIRECCION_ENTREGA" ColumnName="DIRECCION_ENTREGA" />
+          <ScalarProperty Name="CLAVE_DOCUMENTO" ColumnName="CLAVE_DOCUMENTO" />
+          <ScalarProperty Name="FOLIO_EMBARQUE" ColumnName="FOLIO_EMBARQUE" />
+          <ScalarProperty Name="FK_HT_DETALLE" ColumnName="FK_HT_DETALLE" />
+          <ScalarProperty Name="PK_SUBDESTINO" ColumnName="PK_SUBDESTINO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUX_HT_SUBDESTINOS">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.AUX_HT_SUBDESTINOS">
+        <MappingFragment StoreEntitySet="AUX_HT_SUBDESTINOS">
+          <ScalarProperty Name="FOLIO_EMBARQUE" ColumnName="FOLIO_EMBARQUE" />
+          <ScalarProperty Name="FK_EMBARQUE_HT" ColumnName="FK_EMBARQUE_HT" />
+          <ScalarProperty Name="PK_HT_SUBDESTINOS" ColumnName="PK_HT_SUBDESTINOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_COI_POL">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.T_COI_POL">
+        <MappingFragment StoreEntitySet="T_COI_POL">
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="CBF18" ColumnName="CBF18" />
+          <ScalarProperty Name="CBF17" ColumnName="CBF17" />
+          <ScalarProperty Name="CBF16" ColumnName="CBF16" />
+          <ScalarProperty Name="CBF15" ColumnName="CBF15" />
+          <ScalarProperty Name="CBF14" ColumnName="CBF14" />
+          <ScalarProperty Name="CBF13" ColumnName="CBF13" />
+          <ScalarProperty Name="CBF12" ColumnName="CBF12" />
+          <ScalarProperty Name="CBF11" ColumnName="CBF11" />
+          <ScalarProperty Name="CBF10" ColumnName="CBF10" />
+          <ScalarProperty Name="CBF9" ColumnName="CBF9" />
+          <ScalarProperty Name="CBF8" ColumnName="CBF8" />
+          <ScalarProperty Name="CBF7" ColumnName="CBF7" />
+          <ScalarProperty Name="CBF6" ColumnName="CBF6" />
+          <ScalarProperty Name="CBF5" ColumnName="CBF5" />
+          <ScalarProperty Name="CBF4" ColumnName="CBF4" />
+          <ScalarProperty Name="CBF3" ColumnName="CBF3" />
+          <ScalarProperty Name="CBF2" ColumnName="CBF2" />
+          <ScalarProperty Name="CBF1" ColumnName="CBF1" />
+          <ScalarProperty Name="MONTO_CR2" ColumnName="MONTO_CR2" />
+          <ScalarProperty Name="MONTO_DR2" ColumnName="MONTO_DR2" />
+          <ScalarProperty Name="MONTO_CR1" ColumnName="MONTO_CR1" />
+          <ScalarProperty Name="MONTO_DR1" ColumnName="MONTO_DR1" />
+          <ScalarProperty Name="CERO_4" ColumnName="CERO_4" />
+          <ScalarProperty Name="CERO_3" ColumnName="CERO_3" />
+          <ScalarProperty Name="CERO_2" ColumnName="CERO_2" />
+          <ScalarProperty Name="CERO_1" ColumnName="CERO_1" />
+          <ScalarProperty Name="CTA_4" ColumnName="CTA_4" />
+          <ScalarProperty Name="CTA_3" ColumnName="CTA_3" />
+          <ScalarProperty Name="CTA_2" ColumnName="CTA_2" />
+          <ScalarProperty Name="CTA_1" ColumnName="CTA_1" />
+          <ScalarProperty Name="C556" ColumnName="556" />
+          <ScalarProperty Name="DESCR_ESP" ColumnName="DESCR_ESP" />
+          <ScalarProperty Name="CR_DR" ColumnName="CR_DR" />
+          <ScalarProperty Name="ESP_1" ColumnName="ESP_1" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="C2031" ColumnName="2031" />
+          <ScalarProperty Name="RDM" ColumnName="RDM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_COI_POL_TMP">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.T_COI_POL_TMP">
+        <MappingFragment StoreEntitySet="T_COI_POL_TMP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NUM_CTA" ColumnName="NUM_CTA" />
+          <ScalarProperty Name="CBF18" ColumnName="CBF18" />
+          <ScalarProperty Name="CBF17" ColumnName="CBF17" />
+          <ScalarProperty Name="CBF16" ColumnName="CBF16" />
+          <ScalarProperty Name="CBF15" ColumnName="CBF15" />
+          <ScalarProperty Name="CBF14" ColumnName="CBF14" />
+          <ScalarProperty Name="CBF13" ColumnName="CBF13" />
+          <ScalarProperty Name="CBF12" ColumnName="CBF12" />
+          <ScalarProperty Name="CBF11" ColumnName="CBF11" />
+          <ScalarProperty Name="CBF10" ColumnName="CBF10" />
+          <ScalarProperty Name="CBF9" ColumnName="CBF9" />
+          <ScalarProperty Name="CBF8" ColumnName="CBF8" />
+          <ScalarProperty Name="CBF7" ColumnName="CBF7" />
+          <ScalarProperty Name="CBF6" ColumnName="CBF6" />
+          <ScalarProperty Name="CBF5" ColumnName="CBF5" />
+          <ScalarProperty Name="CBF4" ColumnName="CBF4" />
+          <ScalarProperty Name="CBF3" ColumnName="CBF3" />
+          <ScalarProperty Name="CBF2" ColumnName="CBF2" />
+          <ScalarProperty Name="CBF1" ColumnName="CBF1" />
+          <ScalarProperty Name="MONTO_CR2" ColumnName="MONTO_CR2" />
+          <ScalarProperty Name="MONTO_DR2" ColumnName="MONTO_DR2" />
+          <ScalarProperty Name="MONTO_CR1" ColumnName="MONTO_CR1" />
+          <ScalarProperty Name="MONTO_DR1" ColumnName="MONTO_DR1" />
+          <ScalarProperty Name="CERO_4" ColumnName="CERO_4" />
+          <ScalarProperty Name="CERO_3" ColumnName="CERO_3" />
+          <ScalarProperty Name="CERO_2" ColumnName="CERO_2" />
+          <ScalarProperty Name="CERO_1" ColumnName="CERO_1" />
+          <ScalarProperty Name="CTA_4" ColumnName="CTA_4" />
+          <ScalarProperty Name="CTA_3" ColumnName="CTA_3" />
+          <ScalarProperty Name="CTA_2" ColumnName="CTA_2" />
+          <ScalarProperty Name="CTA_1" ColumnName="CTA_1" />
+          <ScalarProperty Name="C556" ColumnName="556" />
+          <ScalarProperty Name="DESCR_ESP" ColumnName="DESCR_ESP" />
+          <ScalarProperty Name="CR_DR" ColumnName="CR_DR" />
+          <ScalarProperty Name="ESP_1" ColumnName="ESP_1" />
+          <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="C2031" ColumnName="2031" />
+          <ScalarProperty Name="RDM" ColumnName="RDM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUX_REMISIONES">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.AUX_REMISIONES">
+        <MappingFragment StoreEntitySet="AUX_REMISIONES">
+          <ScalarProperty Name="FK_EMPRESA" ColumnName="FK_EMPRESA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CEDIS" ColumnName="CEDIS" />
+          <ScalarProperty Name="DISPONIBLE" ColumnName="DISPONIBLE" />
+          <ScalarProperty Name="CLAVE_DOC" ColumnName="CLAVE_DOC" />
+          <ScalarProperty Name="PK_REMISIONES" ColumnName="PK_REMISIONES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_EMPRESA">
+      <EntityTypeMapping TypeName="EMBARQUESRHEEMModel.CAT_EMPRESA">
+        <MappingFragment StoreEntitySet="CAT_EMPRESA">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PK_EMPRESA" ColumnName="PK_EMPRESA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

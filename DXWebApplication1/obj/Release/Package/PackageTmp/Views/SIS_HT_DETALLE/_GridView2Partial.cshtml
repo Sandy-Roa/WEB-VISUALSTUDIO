@@ -1,0 +1,165 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "SIS_HT_DETALLE", Action = "GridView2Partial" };
+
+				settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "SIS_HT_DETALLE", Action = "GridView2PartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "SIS_HT_DETALLE", Action = "GridView2PartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "SIS_HT_DETALLE", Action = "GridView2PartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+       // settings.CommandColumn.ShowNewButtonInHeader = true;
+        //settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+       
+
+		settings.KeyFieldName = "PK_DETALLE";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.Columns.Add("FOLIO_EMBARQUE", "FOLIO DE EMBARQUE");
+        settings.Columns.Add("CLAVE_DOCUMENTO", "CLAVE DE DOCUMENTO");
+        settings.Columns.Add("DIRECCION_ENTREGA", "DIRECCION DE ENTREGA");
+        settings.Columns.Add("CLAVE_COTIZACION", "CLAVE DE COTIZACION");
+        settings.Columns.Add("CLAVE_PEDIDO", "CLAVE DE PEDIDO");
+        settings.Columns.Add("CLAVE_FACTURA", "CLAVE DE FACTURA");
+        settings.Columns.Add("CLAVE_ORDEN_COMPRA", "CLAVE DE ORDEN COMPRA");
+        settings.Columns.Add("CLAVE_CLIENTE", "CLAVE DEL CLIENTE");
+        settings.Columns.Add("CLAVE_ARTICULO", "CLAVE DEL ARTICULO");
+        settings.Columns.Add("CANTIDAD_ORIGINAL", "CANTIDAD ORIGINAL");
+        settings.Columns.Add("CANTIDAD_EMBARCADA", "CANTIDAD EMBARCADA");
+        settings.Columns.Add("OBSERVACIONES", "OBSERVACIONES");
+        
+				//settings.Columns.Add("CANTIDAD_DEVUELTA");
+				//settings.Columns.Add("FK_TIPO_DEVOLUCION");
+				//settings.Columns.Add("DESCRIPCION_DEVOLUCIÓN");
+				//settings.Columns.Add("CLAVE_NOTA_CREDITO");
+                //settings.Columns.Add("FK_EMBARQUE_HT");
+
+                //COMIENZA CUSTOM
+
+                settings.SetEditFormTemplateContent(c =>
+                {
+                    var sueldo = ViewData["dataItem"] ?? c.DataItem;
+
+                    ViewContext.Writer.Write("<table>" + "<tr>" + "<td>");
+
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "CANTIDAD EMBARCADA:";
+                        edtSettings.AssociatedControlName = "CANTIDAD_EMBARCADA";
+                    }).Render();
+
+                    Html.DevExpress().SpinEdit(edtSettings =>
+                    {
+                        edtSettings.Name = "CANTIDAD_EMBARCADA";
+                        edtSettings.Properties.MinValue = 0;
+                        edtSettings.Properties.MaxValue = 999999999;
+                        edtSettings.Properties.DecimalPlaces = 0;
+                        edtSettings.Properties.NumberType = SpinEditNumberType.Float;
+                        edtSettings.Properties.Increment = 1M;
+                        edtSettings.Properties.LargeIncrement = 1;
+                        edtSettings.Properties.SpinButtons.ShowLargeIncrementButtons = true;
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(250);
+                        // edtSettings.Properties.DisplayFormatString = "c";
+                        // edtSettings.Properties.ClientSideEvents.ValueChanged = "calculaImportesMensuales";
+                    }).Bind(DataBinder.Eval(sueldo, "CANTIDAD_EMBARCADA"))
+                    .Render();
+                    
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+                    ViewContext.Writer.Write("</table>");
+
+
+
+                    ViewContext.Writer.Write("<tr>");
+                    ViewContext.Writer.Write("<td>");
+                    ViewContext.Writer.Write("<br>");
+
+                    Html.DevExpress().Label(edtSettings =>
+                    {
+                        edtSettings.ControlStyle.CssClass = "label";
+                        edtSettings.Text = "OBSERVACIONES:";
+                        edtSettings.AssociatedControlName = "OBSERVACIONES";
+                    }).Render();
+
+
+                    Html.DevExpress().Memo(edtSettings =>
+                    {
+                        edtSettings.Name = "OBSERVACIONES";
+                        edtSettings.Properties.NullText = "OBSERVACIONES";
+                        edtSettings.ControlStyle.CssClass = "editor";
+                        edtSettings.ShowModelErrors = true;
+                        edtSettings.Width = Unit.Pixel(900);
+                        edtSettings.Height = Unit.Pixel(50);
+                        //edtSettings.ToolTip = c.KeyValue == null ? "Descripción de la Introducción para este Programa de Trabajo" : "Editar Introducción";
+                    }).Bind(DataBinder.Eval(sueldo, "OBSERVACIONES"))
+                      .Render();
+
+                    ViewContext.Writer.Write("</br>");
+                    ViewContext.Writer.Write("</td>");
+                    ViewContext.Writer.Write("</tr>");
+
+                    /***************************BOTONES**********************************/
+
+                    //**Botones Guardar & Cancelar
+                    //ViewContext.Writer.Write("<br>");
+                    ViewContext.Writer.Write("<hr noshade>");
+                    Html.DevExpress().Label(
+                                edtSettings =>
+                                {
+                                    edtSettings.ControlStyle.CssClass = "label";
+                                }
+                            )
+                            .Render();
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnUp";
+                            btnSettings.Text = "Guardar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            btnSettings.Images.Image.Url = "Content/Images/guardar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Images.Image.Width = 16;
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView" + ".UpdateEdit(); }";
+
+                        }
+                    )
+                    .Render();
+
+                    Html.DevExpress().Button(
+                        btnSettings =>
+                        {
+                            btnSettings.Name = "btnCance";
+                            btnSettings.Text = "Cancelar";
+                            btnSettings.ControlStyle.CssClass = "button";
+                            btnSettings.Images.Image.Url = "Content/Images/cancelar.png";
+                            btnSettings.ImagePosition = ImagePosition.Right;
+                            btnSettings.Style["position"] = "relative";
+                            btnSettings.Style["left"] = "5px";
+                            btnSettings.ClientSideEvents.Click = "function(s, e){ GridView" + ".CancelEdit(); }";
+                        }
+                    )
+                    .Render();
+
+                }); //TERMINA CUSTOM
+        
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

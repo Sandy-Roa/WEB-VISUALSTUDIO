@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d71cc888e79741899336549f04286a07" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_CEDIS" Width="1.5" PointX="0.75" PointY="22" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_DESTINO" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_PROVEEDOR" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_PROVIENE_DE" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_STATUS_EMBARQUE" Width="1.5" PointX="0.75" PointY="17.375" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_STATUS_RETORNO" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_TIPO_DEVOLUCION" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_TIPO_EMBARQUE" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_TIPO_HT" Width="1.5" PointX="0.75" PointY="24.375" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_TRANSPORTE" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.HT_DOCUMENTOS" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.AUX_FOLIOS" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.SIS_HT_DETALLE" Width="1.5" PointX="6.875" PointY="4.375" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_TI__5BE2A6F2" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.UE_EMBARQUEHT" Width="1.5" PointX="6" PointY="13.75" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_CE__36B12243" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_DE__37A5467C" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__38996AB5" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_PR__398D8EEE" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3A81B327" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_ST__3B75D760" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3C69FB99" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TI__3D5E1FD2" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__FK_TR__3E52440B" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_EM__4BAC3F29" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__SIS_HT_DE__FK_EM__5AEE82B9" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_TARIFA" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_TIPO_ENTREGA" Width="1.5" PointX="3.75" PointY="17" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__UE_EMBARQ__TIPO___6E01572D" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.HT_SUBDESTINOS" Width="1.5" PointX="9.125" PointY="4.25" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__HT_SUBDES__FK_HT__7B5B524B" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.AUX_HT_SUBDESTINOS" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.T_COI_POL" Width="1.5" PointX="8.375" PointY="10.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.T_COI_POL_TMP" Width="1.5" PointX="10.375" PointY="10.75" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.AUX_REMISIONES" Width="1.5" PointX="13.625" PointY="1" />
+        <EntityTypeShape EntityType="EMBARQUESRHEEMModel.CAT_EMPRESA" Width="1.5" PointX="11.375" PointY="1.375" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK__HT_DOCUME__FK_RE__5629CD9C" />
+        <AssociationConnector Association="EMBARQUESRHEEMModel.FK_EMPRESA" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

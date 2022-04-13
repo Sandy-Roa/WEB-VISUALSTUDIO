@@ -1,0 +1,61 @@
+@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
+@model DXWebApplication1.Models.LoginModel
+           <center>
+               <div class="accountHeader">
+                   <asp:login ="http://localhost:1090/Account/Login" runat="server" enableviewstate="false" onauthenticate="LoginUser_Authenticate" width="100%">
+                       <h1>
+                           INICIO DE SESIÓN
+                       </h1>
+                   </asp:login>
+                       <p>
+
+                           Por favor ingrese su usuario y contraseña. @Html.ActionLink("Registrar", "Register")
+                           Si no tienes cuenta.
+                       </p>
+                   
+               </div>
+            
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.DevExpress().Label(settings =>
+{
+    settings.Name = "UserNameLabel";
+    settings.Text = "Nombre de Usuario";
+    settings.AssociatedControlName = "Nombre de Usuario";
+}).GetHtml()
+
+        <div class="form-field">
+            @Html.EditorFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+
+        @Html.DevExpress().Label(settings =>
+{
+    settings.Name = "PasswordLabel";
+    settings.Text = "Contraseña";
+    settings.AssociatedControlName = "Contraseña";
+}).GetHtml()
+        <div class="form-field">
+            @Html.EditorFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+
+        <div class="form-field">
+            @Html.DevExpress().CheckBox(settings =>
+   {
+       settings.Name = "RememberMe";
+       settings.Text = "¿Recordar Usuario?";
+   }).GetHtml()
+        </div>
+        
+
+        @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "Button";
+    settings.Text = "ENTRAR";
+    settings.UseSubmitBehavior = true;
+}).GetHtml()
+        
+}</center>
